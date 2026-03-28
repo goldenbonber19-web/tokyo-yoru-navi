@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>給与シミュレーター｜東京夜職ナビ</title>
+<meta name="description" content="夜職の月収・年収をシミュレーション。業種・出勤日数・勤務時間・時給から自動計算。ガールズバー・キャバクラ・ラウンジの収入目安がわかります。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a84c;--gold-l:#d4b86a;--gold-d:#a88a3a;--navy:#0d1b2a;--navy-l:#142538;--navy-m:#1b2d44;--black:#0a0a0f;--white:#f5f0eb;--gray:#9ca3af;--gray-l:#6b7280;--border:rgba(201,168,76,.15);--pink:#d4a0b0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--black);color:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(201,168,76,.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(212,160,176,.04) 0%,transparent 50%);pointer-events:none;z-index:0}
+a{text-decoration:none;color:inherit}
+.header{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.header-inner{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-d));display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 2px 12px rgba(201,168,76,.4)}
+.logo-text{font-family:'Noto Serif JP',serif;font-size:1.15rem;font-weight:900;color:var(--white);letter-spacing:.04em}
+.logo-sub{font-size:.62rem;color:var(--gold);letter-spacing:.12em}
+.nav{display:flex;align-items:center;gap:24px;font-size:.85rem;font-weight:400}
+.nav a{color:var(--gray);transition:color .3s}
+.nav a:hover{color:var(--gold)}
+.btn-line{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--black);font-weight:700;border-radius:100px;padding:10px 22px;font-size:.82rem;transition:all .3s;box-shadow:0 3px 16px rgba(201,168,76,.3)}
+.btn-line:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(201,168,76,.45)}
+.main{max-width:700px;margin:0 auto;padding:48px 20px;position:relative;z-index:1}
+.breadcrumb{font-size:.78rem;color:var(--gray);margin-bottom:32px}
+.breadcrumb a{color:var(--gold)}
+.page-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:900;margin-bottom:12px;text-align:center}
+.page-title span{background:linear-gradient(135deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-desc{text-align:center;color:var(--gray);font-size:.9rem;margin-bottom:48px;font-weight:300}
+.sim-card{background:var(--navy-l);border:1px solid var(--border);border-radius:16px;padding:32px 28px}
+.sim-group{margin-bottom:28px}
+.sim-label{display:flex;align-items:center;justify-content:space-between;font-size:.88rem;font-weight:500;margin-bottom:10px}
+.sim-label .val{color:var(--gold);font-weight:700;font-size:1rem}
+.sim-select{width:100%;background:var(--navy);color:var(--white);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:.9rem;font-family:inherit;outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.sim-select:focus{border-color:var(--gold)}
+.sim-select option{background:var(--navy);color:var(--white)}
+.sim-slider{-webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:var(--navy-m);outline:none;margin-top:4px}
+.sim-slider::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-d));cursor:pointer;box-shadow:0 2px 8px rgba(201,168,76,.4)}
+.sim-slider::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-d));cursor:pointer;border:none}
+.sim-presets{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.sim-preset{font-size:.75rem;padding:5px 14px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--gray);cursor:pointer;transition:all .2s;font-family:inherit}
+.sim-preset:hover,.sim-preset.active{border-color:rgba(201,168,76,.4);color:var(--gold);background:rgba(201,168,76,.08)}
+.divider{border:none;border-top:1px solid var(--border);margin:32px 0}
+.result-area{text-align:center}
+.result-area h3{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;margin-bottom:24px;color:var(--gray)}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.result-box{background:var(--navy);border:1px solid var(--border);border-radius:14px;padding:20px 16px;text-align:center}
+.result-box.main-result{border-color:rgba(201,168,76,.35);background:rgba(201,168,76,.06)}
+.result-label{font-size:.78rem;color:var(--gray);margin-bottom:6px}
+.result-val{font-family:'Noto Serif JP',serif;font-size:1.8rem;font-weight:900;color:var(--gold)}
+.result-val small{font-size:.9rem;font-weight:400}
+.result-box:not(.main-result) .result-val{color:var(--white);font-size:1.4rem}
+.result-note{font-size:.75rem;color:var(--gray-l);line-height:1.7}
+.cta-box{margin-top:40px;background:var(--navy-l);border:1px solid var(--border);border-radius:16px;padding:32px 24px;text-align:center}
+.cta-box h3{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;margin-bottom:8px}
+.cta-box p{color:var(--gray);font-size:.85rem;margin-bottom:18px}
+.cta-box .btn-line{padding:14px 36px;font-size:.95rem}
+.footer{background:var(--navy);color:#fff;padding:32px 20px;margin-top:56px;border-top:1px solid var(--border);text-align:center}
+.footer a{color:var(--gold);font-size:.82rem;margin:0 10px}
+.footer-copy{font-size:.72rem;color:var(--gray-l);margin-top:12px}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--gold);margin:5px 0}
+@media(max-width:640px){.nav{display:none}.hamburger{display:block}.sim-card{padding:24px 18px}.result-val{font-size:1.4rem}.result-box:not(.main-result) .result-val{font-size:1.1rem}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a href="../" class="logo">
+      <div class="logo-icon">✦</div>
+      <div><div class="logo-text">東京夜職ナビ</div><div class="logo-sub">TOKYO YORU NAVI</div></div>
+    </a>
+    <nav class="nav">
+      <a href="../search/">求人検索</a>
+      <a href="../faq/">FAQ</a>
+      <a href="../testimonials/">体験談</a>
+      <a href="../favorites/">お気に入り</a>
+      <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-line">💬 LINE相談</a>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.nav').style.display=this.dataset.open?'none':'flex';this.dataset.open=this.dataset.open?'':'1'"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="main">
+  <div class="breadcrumb"><a href="../">トップ</a> ＞ 給与シミュレーター</div>
+  <h1 class="page-title">給与<span>シミュレーター</span></h1>
+  <p class="page-desc">業種・勤務条件を入力して、月収・年収の目安を計算できます。</p>
+
+  <div class="sim-card">
+    <div class="sim-group">
+      <div class="sim-label">業種 <span class="val" id="genre-val">ガールズバー</span></div>
+      <select class="sim-select" id="genre" onchange="updateGenre()">
+        <option value="gb">ガールズバー</option>
+        <option value="cab">キャバクラ</option>
+        <option value="lounge">ラウンジ</option>
+      </select>
+    </div>
+
+    <div class="sim-group">
+      <div class="sim-label">週の出勤日数 <span class="val" id="days-val">3日</span></div>
+      <input type="range" class="sim-slider" id="days" min="1" max="7" value="3" oninput="updateDays()">
+      <div class="sim-presets">
+        <button class="sim-preset" onclick="setDays(2)">週2日</button>
+        <button class="sim-preset active" onclick="setDays(3)">週3日</button>
+        <button class="sim-preset" onclick="setDays(4)">週4日</button>
+        <button class="sim-preset" onclick="setDays(5)">週5日</button>
+      </div>
+    </div>
+
+    <div class="sim-group">
+      <div class="sim-label">1日の勤務時間 <span class="val" id="hours-val">5時間</span></div>
+      <input type="range" class="sim-slider" id="hours" min="3" max="8" value="5" oninput="updateHours()">
+      <div class="sim-presets">
+        <button class="sim-preset" onclick="setHours(3)">3時間</button>
+        <button class="sim-preset" onclick="setHours(4)">4時間</button>
+        <button class="sim-preset active" onclick="setHours(5)">5時間</button>
+        <button class="sim-preset" onclick="setHours(6)">6時間</button>
+      </div>
+    </div>
+
+    <div class="sim-group">
+      <div class="sim-label">時給 <span class="val" id="wage-val">2,000円</span></div>
+      <input type="range" class="sim-slider" id="wage" min="1000" max="8000" step="100" value="2000" oninput="updateWage()">
+      <div class="sim-presets" id="wage-presets">
+        <button class="sim-preset" onclick="setWage(1500)">1,500円</button>
+        <button class="sim-preset active" onclick="setWage(2000)">2,000円</button>
+        <button class="sim-preset" onclick="setWage(3000)">3,000円</button>
+        <button class="sim-preset" onclick="setWage(5000)">5,000円</button>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="result-area">
+      <h3>あなたの収入シミュレーション</h3>
+      <div class="result-grid">
+        <div class="result-box main-result">
+          <div class="result-label">月収（税引前）</div>
+          <div class="result-val" id="monthly">130,000<small>円</small></div>
+        </div>
+        <div class="result-box main-result">
+          <div class="result-label">年収（税引前）</div>
+          <div class="result-val" id="yearly">1,560,000<small>円</small></div>
+        </div>
+        <div class="result-box">
+          <div class="result-label">日給</div>
+          <div class="result-val" id="daily">10,000<small>円</small></div>
+        </div>
+        <div class="result-box">
+          <div class="result-label">月の出勤日数</div>
+          <div class="result-val" id="monthly-days">13<small>日</small></div>
+        </div>
+      </div>
+      <p class="result-note">※ 上記はあくまで概算です。実際の収入は各種バック・インセンティブ・指名料等により変動します。<br>※ 税金・社会保険料等は含まれていません。</p>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>この時給で働けるお店を探す</h3>
+    <p>LINEでご希望の条件を伝えるだけ。あなたに合ったお店をご案内します。</p>
+    <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-line">💬 LINEで相談する</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div>
+    <a href="../">トップ</a>
+    <a href="../search/">求人検索</a>
+    <a href="../faq/">FAQ</a>
+    <a href="../testimonials/">体験談</a>
+    <a href="../articles/">記事</a>
+  </div>
+  <div class="footer-copy">© 2026 東京夜職ナビ. All rights reserved.</div>
+</footer>
+
+<script>
+const genreDefaults = {gb:{wage:2000,label:'ガールズバー'},cab:{wage:3500,label:'キャバクラ'},lounge:{wage:4000,label:'ラウンジ'}};
+function fmt(n){return n.toLocaleString()}
+function calc(){
+  const d=+document.getElementById('days').value;
+  const h=+document.getElementById('hours').value;
+  const w=+document.getElementById('wage').value;
+  const md=Math.round(d*4.33);
+  const daily=w*h;
+  const monthly=daily*md;
+  const yearly=monthly*12;
+  document.getElementById('daily').innerHTML=fmt(daily)+'<small>円</small>';
+  document.getElementById('monthly').innerHTML=fmt(monthly)+'<small>円</small>';
+  document.getElementById('yearly').innerHTML=fmt(yearly)+'<small>円</small>';
+  document.getElementById('monthly-days').innerHTML=md+'<small>日</small>';
+}
+function updateGenre(){
+  const g=document.getElementById('genre').value;
+  const def=genreDefaults[g];
+  document.getElementById('genre-val').textContent=def.label;
+  setWage(def.wage);
+}
+function updateDays(){
+  const v=document.getElementById('days').value;
+  document.getElementById('days-val').textContent=v+'日';
+  document.querySelectorAll('#days~.sim-presets .sim-preset').forEach(b=>b.classList.toggle('active',b.textContent==='週'+v+'日'));
+  calc();
+}
+function updateHours(){
+  const v=document.getElementById('hours').value;
+  document.getElementById('hours-val').textContent=v+'時間';
+  document.querySelectorAll('#hours~.sim-presets .sim-preset').forEach(b=>b.classList.toggle('active',b.textContent===v+'時間'));
+  calc();
+}
+function updateWage(){
+  const v=+document.getElementById('wage').value;
+  document.getElementById('wage-val').textContent=fmt(v)+'円';
+  document.querySelectorAll('#wage-presets .sim-preset').forEach(b=>b.classList.toggle('active',b.textContent===fmt(v)+'円'));
+  calc();
+}
+function setDays(n){document.getElementById('days').value=n;updateDays()}
+function setHours(n){document.getElementById('hours').value=n;updateHours()}
+function setWage(n){document.getElementById('wage').value=n;updateWage()}
+calc();
+</script>
+</body>
+</html>

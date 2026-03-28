@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>お気に入り一覧｜東京夜職ナビ</title>
+<meta name="description" content="お気に入りに保存した店舗の一覧。気になる求人をまとめてチェックできます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a84c;--gold-l:#d4b86a;--gold-d:#a88a3a;--navy:#0d1b2a;--navy-l:#142538;--navy-m:#1b2d44;--black:#0a0a0f;--white:#f5f0eb;--gray:#9ca3af;--gray-l:#6b7280;--border:rgba(201,168,76,.15);--pink:#d4a0b0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--black);color:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(201,168,76,.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(212,160,176,.04) 0%,transparent 50%);pointer-events:none;z-index:0}
+a{text-decoration:none;color:inherit}
+.header{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.header-inner{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-d));display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 2px 12px rgba(201,168,76,.4)}
+.logo-text{font-family:'Noto Serif JP',serif;font-size:1.15rem;font-weight:900;color:var(--white);letter-spacing:.04em}
+.logo-sub{font-size:.62rem;color:var(--gold);letter-spacing:.12em}
+.nav{display:flex;align-items:center;gap:24px;font-size:.85rem;font-weight:400}
+.nav a{color:var(--gray);transition:color .3s}
+.nav a:hover{color:var(--gold)}
+.btn-line{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--black);font-weight:700;border-radius:100px;padding:10px 22px;font-size:.82rem;transition:all .3s;box-shadow:0 3px 16px rgba(201,168,76,.3)}
+.btn-line:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(201,168,76,.45)}
+.main{max-width:900px;margin:0 auto;padding:48px 20px;position:relative;z-index:1}
+.breadcrumb{font-size:.78rem;color:var(--gray);margin-bottom:32px}
+.breadcrumb a{color:var(--gold)}
+.page-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:900;margin-bottom:12px;text-align:center}
+.page-title span{background:linear-gradient(135deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-desc{text-align:center;color:var(--gray);font-size:.9rem;margin-bottom:16px;font-weight:300}
+.fav-count{text-align:center;font-size:.85rem;color:var(--gold);margin-bottom:32px}
+.fav-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.fav-card{background:var(--navy-l);border:1px solid var(--border);border-radius:14px;padding:20px;transition:all .3s;position:relative}
+.fav-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-2px)}
+.fav-remove{position:absolute;top:14px;right:14px;background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--gray);transition:color .2s;padding:4px}
+.fav-remove:hover{color:#ef4444}
+.fav-badge{display:inline-block;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:100px;margin-bottom:8px}
+.badge-gb{background:rgba(212,160,176,.15);color:var(--pink)}
+.badge-cab{background:rgba(201,168,76,.12);color:var(--gold)}
+.badge-lounge{background:rgba(167,139,250,.12);color:#a78bfa}
+.fav-name{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.fav-name a:hover{color:var(--gold)}
+.fav-station{font-size:.78rem;color:var(--gray);margin-bottom:10px}
+.fav-pay{display:flex;gap:8px;margin-bottom:12px}
+.fav-pay-box{flex:1;border-radius:8px;padding:8px;text-align:center}
+.fav-pay-box.trial{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.15)}
+.fav-pay-box.regular{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+.fav-pay-label{font-size:.65rem;color:var(--gray);display:block}
+.fav-pay-val{font-size:.85rem;font-weight:700}
+.fav-pay-box.trial .fav-pay-val{color:var(--gold)}
+.fav-btns{display:flex;gap:8px}
+.fav-btn-detail{flex:1;text-align:center;padding:9px;font-size:.78rem;font-weight:500;color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:8px;transition:all .3s}
+.fav-btn-detail:hover{background:rgba(201,168,76,.1)}
+.fav-btn-apply{flex:1;text-align:center;padding:9px;font-size:.78rem;font-weight:700;color:var(--black);background:linear-gradient(135deg,var(--gold),var(--gold-d));border-radius:8px;transition:all .3s}
+.fav-btn-apply:hover{box-shadow:0 4px 16px rgba(201,168,76,.3)}
+.empty-state{text-align:center;padding:80px 20px}
+.empty-icon{font-size:3rem;margin-bottom:16px;opacity:.4}
+.empty-title{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:700;margin-bottom:10px}
+.empty-desc{color:var(--gray);font-size:.88rem;margin-bottom:24px;font-weight:300}
+.empty-btn{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--black);font-weight:700;border-radius:100px;padding:12px 28px;font-size:.88rem;transition:all .3s}
+.empty-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(201,168,76,.4)}
+.footer{background:var(--navy);color:#fff;padding:32px 20px;margin-top:56px;border-top:1px solid var(--border);text-align:center}
+.footer a{color:var(--gold);font-size:.82rem;margin:0 10px}
+.footer-copy{font-size:.72rem;color:var(--gray-l);margin-top:12px}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--gold);margin:5px 0}
+@media(max-width:640px){.nav{display:none}.hamburger{display:block}.fav-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a href="../" class="logo">
+      <div class="logo-icon">✦</div>
+      <div><div class="logo-text">東京夜職ナビ</div><div class="logo-sub">TOKYO YORU NAVI</div></div>
+    </a>
+    <nav class="nav">
+      <a href="../search/">求人検索</a>
+      <a href="../faq/">FAQ</a>
+      <a href="../simulator/">給与シミュレーター</a>
+      <a href="../testimonials/">体験談</a>
+      <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-line">💬 LINE相談</a>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.nav').style.display=this.dataset.open?'none':'flex';this.dataset.open=this.dataset.open?'':'1'"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="main">
+  <div class="breadcrumb"><a href="../">トップ</a> ＞ お気に入り</div>
+  <h1 class="page-title"><span>お気に入り</span>一覧</h1>
+  <p class="page-desc">気になる店舗を保存して、まとめてチェックできます。</p>
+  <div class="fav-count"><span id="fav-count-num">0</span>件のお気に入り</div>
+
+  <div id="fav-grid" class="fav-grid"></div>
+
+  <div id="empty-state" class="empty-state">
+    <div class="empty-icon">♡</div>
+    <div class="empty-title">お気に入りはまだありません</div>
+    <div class="empty-desc">求人検索や店舗ページの♡ボタンからお気に入りに追加できます。</div>
+    <a href="../search/" class="empty-btn">求人を検索する</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div>
+    <a href="../">トップ</a>
+    <a href="../search/">求人検索</a>
+    <a href="../faq/">FAQ</a>
+    <a href="../simulator/">給与シミュレーター</a>
+    <a href="../articles/">記事</a>
+  </div>
+  <div class="footer-copy">© 2026 東京夜職ナビ. All rights reserved.</div>
+</footer>
+
+<script>
+function getFavs(){
+  try{return JSON.parse(localStorage.getItem('yoru_favorites')||'[]')}catch(e){return[]}
+}
+function saveFavs(favs){localStorage.setItem('yoru_favorites',JSON.stringify(favs))}
+function removeFav(slug){
+  const favs=getFavs().filter(f=>f.slug!==slug);
+  saveFavs(favs);
+  render();
+}
+function badgeClass(genre){
+  if(genre.includes('ガールズバー'))return'badge-gb';
+  if(genre.includes('ラウンジ'))return'badge-lounge';
+  return'badge-cab';
+}
+function render(){
+  const favs=getFavs();
+  const grid=document.getElementById('fav-grid');
+  const empty=document.getElementById('empty-state');
+  document.getElementById('fav-count-num').textContent=favs.length;
+  if(!favs.length){grid.innerHTML='';empty.style.display='';return}
+  empty.style.display='none';
+  grid.innerHTML=favs.map(f=>`
+    <div class="fav-card">
+      <button class="fav-remove" onclick="removeFav('${f.slug}')" title="お気に入りから削除">✕</button>
+      <span class="fav-badge ${badgeClass(f.genre)}">${f.genre}</span>
+      <div class="fav-name"><a href="../shop/${f.slug}">${f.name}</a></div>
+      <div class="fav-station">${f.station||''}</div>
+      <div class="fav-pay">
+        <div class="fav-pay-box trial"><span class="fav-pay-label">体入時給</span><span class="fav-pay-val">${f.trialPay||'-'}</span></div>
+        <div class="fav-pay-box regular"><span class="fav-pay-label">本入時給</span><span class="fav-pay-val">${f.regularPay||'-'}</span></div>
+      </div>
+      <div class="fav-btns">
+        <a href="../shop/${f.slug}" class="fav-btn-detail">詳細を見る</a>
+        <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="fav-btn-apply">LINE応募</a>
+      </div>
+    </div>
+  `).join('');
+}
+render();
+</script>
+</body>
+</html>

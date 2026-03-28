@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>よくある質問（FAQ）｜東京夜職ナビ</title>
+<meta name="description" content="東京の夜職求人に関するよくある質問。未経験・体験入店・面接・日払い・服装など、応募前に知りたい疑問にお答えします。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a84c;--gold-l:#d4b86a;--gold-d:#a88a3a;--navy:#0d1b2a;--navy-l:#142538;--navy-m:#1b2d44;--black:#0a0a0f;--white:#f5f0eb;--gray:#9ca3af;--gray-l:#6b7280;--border:rgba(201,168,76,.15);--pink:#d4a0b0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--black);color:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(201,168,76,.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(212,160,176,.04) 0%,transparent 50%);pointer-events:none;z-index:0}
+a{text-decoration:none;color:inherit}
+.header{position:sticky;top:0;z-index:100;background:rgba(10,10,15,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.header-inner{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-d));display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 2px 12px rgba(201,168,76,.4)}
+.logo-text{font-family:'Noto Serif JP',serif;font-size:1.15rem;font-weight:900;color:var(--white);letter-spacing:.04em}
+.logo-sub{font-size:.62rem;color:var(--gold);letter-spacing:.12em}
+.nav{display:flex;align-items:center;gap:24px;font-size:.85rem;font-weight:400}
+.nav a{color:var(--gray);transition:color .3s}
+.nav a:hover{color:var(--gold)}
+.btn-line{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--black);font-weight:700;border-radius:100px;padding:10px 22px;font-size:.82rem;transition:all .3s;box-shadow:0 3px 16px rgba(201,168,76,.3)}
+.btn-line:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(201,168,76,.45)}
+.main{max-width:800px;margin:0 auto;padding:48px 20px;position:relative;z-index:1}
+.breadcrumb{font-size:.78rem;color:var(--gray);margin-bottom:32px}
+.breadcrumb a{color:var(--gold)}
+.page-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:900;margin-bottom:12px;text-align:center}
+.page-title span{background:linear-gradient(135deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-desc{text-align:center;color:var(--gray);font-size:.9rem;margin-bottom:48px;font-weight:300}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;background:var(--navy-l);transition:border-color .3s}
+.faq-item:hover{border-color:rgba(201,168,76,.3)}
+.faq-q{display:flex;align-items:center;gap:14px;padding:20px 24px;cursor:pointer;font-weight:700;font-size:.95rem;user-select:none;transition:background .2s}
+.faq-q:hover{background:var(--navy-m)}
+.faq-q::before{content:'Q';display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--black);font-size:.8rem;font-weight:900;flex-shrink:0}
+.faq-q::after{content:'+';margin-left:auto;font-size:1.4rem;color:var(--gold);font-weight:300;transition:transform .3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-inner{padding:0 24px 24px 70px;color:var(--gray);font-size:.88rem;line-height:1.9;font-weight:300}
+.cta-box{margin-top:56px;background:var(--navy-l);border:1px solid var(--border);border-radius:16px;padding:36px 28px;text-align:center}
+.cta-box h3{font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.cta-box p{color:var(--gray);font-size:.85rem;margin-bottom:20px}
+.cta-box .btn-line{padding:14px 36px;font-size:.95rem}
+.footer{background:var(--navy);color:#fff;padding:32px 20px;margin-top:56px;border-top:1px solid var(--border);text-align:center}
+.footer a{color:var(--gold);font-size:.82rem;margin:0 10px}
+.footer-copy{font-size:.72rem;color:var(--gray-l);margin-top:12px}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--gold);margin:5px 0}
+@media(max-width:640px){.nav{display:none}.hamburger{display:block}.faq-q{padding:16px 18px;font-size:.88rem}.faq-a-inner{padding:0 18px 18px 52px}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a href="../" class="logo">
+      <div class="logo-icon">✦</div>
+      <div><div class="logo-text">東京夜職ナビ</div><div class="logo-sub">TOKYO YORU NAVI</div></div>
+    </a>
+    <nav class="nav">
+      <a href="../search/">求人検索</a>
+      <a href="../faq/">FAQ</a>
+      <a href="../simulator/">給与シミュレーター</a>
+      <a href="../favorites/">お気に入り</a>
+      <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-line">💬 LINE相談</a>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.nav').style.display=this.dataset.open?'none':'flex';this.dataset.open=this.dataset.open?'':'1'"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="main">
+  <div class="breadcrumb"><a href="../">トップ</a> ＞ よくある質問</div>
+  <h1 class="page-title">よくある<span>質問</span></h1>
+  <p class="page-desc">夜職が初めての方でも安心。応募前に知りたい疑問にお答えします。</p>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">未経験でも応募できますか？</div>
+      <div class="faq-a"><div class="faq-a-inner">はい、多くの店舗が未経験者を歓迎しています。接客マナーやお仕事の流れは入店後に先輩スタッフが丁寧に教えてくれるので、初めての方でも安心して始められます。研修制度が充実しているお店も多数掲載しています。</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">掛け持ち・Wワークはできますか？</div>
+      <div class="faq-a"><div class="faq-a-inner">Wワーク・掛け持ちOKのお店は多数あります。昼間は別のお仕事をされている方や、学業と両立したい方も働きやすい環境が整っています。シフトの融通が利くお店を選ぶのがポイントです。LINEでご相談いただければ、ご希望に合ったお店をご案内します。</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">体験入店とは何ですか？</div>
+      <div class="faq-a"><div class="faq-a-inner">体験入店（体入）とは、正式に入店する前にお試しで1日だけ働ける制度です。お店の雰囲気やお仕事内容を実際に体験でき、体験入店でもお給料が支払われます。「合わなかったらやめられる」ので、気軽に試してみることができます。</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">面接はどんな感じですか？</div>
+      <div class="faq-a"><div class="faq-a-inner">面接はカジュアルな雰囲気で行われることがほとんどです。履歴書不要のお店も多く、普段着で来店してOKな場合がほとんどです。お仕事内容や勤務条件の説明を受け、不明点を質問できる場でもあります。堅苦しく考えず、気軽に足を運んでみてください。</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">日払いはできますか？</div>
+      <div class="faq-a"><div class="faq-a-inner">日払い対応のお店は多数あります。当サイトでは「日払いOK」のタグが付いたお店を簡単に検索できます。急な出費があるときや、すぐにお給料が欲しい方にはとても嬉しい制度です。お店によって上限額や条件が異なる場合があるので、詳細はLINEでお問い合わせください。</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">ノルマはありますか？</div>
+      <div class="faq-a"><div class="faq-a-inner">ノルマの有無はお店によって異なります。当サイトでは「ノルマなし」のお店も多数掲載しています。特にガールズバーやカジュアルなラウンジではノルマがないお店が多い傾向です。ノルマが不安な方は、検索時に「ノルマなし」タグで絞り込むことをおすすめします。</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">服装・髪色は自由ですか？</div>
+      <div class="faq-a"><div class="faq-a-inner">お店によってルールは異なりますが、多くのお店で髪色やネイルは自由です。ガールズバーは比較的カジュアルで私服OKのお店も多いです。キャバクラやラウンジではドレス着用の場合もありますが、衣装をレンタルできるお店も多数あります。気になるお店の詳細はLINEでお気軽にご相談ください。</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">学生でも働けますか？</div>
+      <div class="faq-a"><div class="faq-a-inner">18歳以上（高校生不可）であれば、学生の方も応募可能なお店が多数あります。授業やテスト期間に合わせてシフトを調整できるお店も多く、学業との両立がしやすい環境です。週1日からOKのお店もあるので、無理のないペースで働けます。</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">年齢制限はありますか？</div>
+      <div class="faq-a"><div class="faq-a-inner">法律上、18歳以上（高校生不可）であることが必須条件です。上限年齢はお店によって異なりますが、ガールズバーは18〜20代が中心、キャバクラは20代〜30代前半、ラウンジは20代〜30代後半のお店が多い傾向です。年齢に合ったお店選びのご相談もLINEで承っています。</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">LINEで応募するとどうなりますか？</div>
+      <div class="faq-a"><div class="faq-a-inner">LINEで友達追加していただくと、担当スタッフがお返事いたします。希望エリア・業種・勤務条件などをお伝えいただければ、あなたに合ったお店をご提案します。もちろん相談だけでもOKです。無理な勧誘は一切ありませんので、お気軽にメッセージをお送りください。</div></div>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>まだ疑問が残っていますか？</h3>
+    <p>LINEでお気軽にご質問ください。担当スタッフが丁寧にお答えします。</p>
+    <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-line">💬 LINEで質問する</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div>
+    <a href="../">トップ</a>
+    <a href="../search/">求人検索</a>
+    <a href="../testimonials/">体験談</a>
+    <a href="../simulator/">給与シミュレーター</a>
+    <a href="../articles/">記事</a>
+  </div>
+  <div class="footer-copy">© 2026 東京夜職ナビ. All rights reserved.</div>
+</footer>
+</body>
+</html>

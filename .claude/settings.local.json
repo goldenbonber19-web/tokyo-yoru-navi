@@ -6,7 +6,13 @@
       "Bash(git commit:*)",
       "Bash(git remote:*)",
       "Bash(git branch:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(ls /Users/ioka/Downloads/yoru-navi-static/shop/*.html)",
+      "Bash(grep -l '<style>' *.html)",
+      "Bash(while read:*)",
+      "Bash(do grep:*)",
+      "Bash(done)",
+      "Bash(python3:*)"
     ]
   }
 }
