@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>東京夜職ナビ｜ガールズバー・キャバクラ・ラウンジ求人</title>
+<meta name="description" content="東京のガールズバー・キャバクラ・ラウンジ求人ポータル。エリア・駅・業種から検索できます。LINE応募対応。未経験歓迎多数。">
+<meta property="og:title" content="東京夜職ナビ｜東京の夜職求人">
+<meta property="og:description" content="東京のガールズバー・キャバクラ・ラウンジ求人をエリア・駅から検索。LINE応募対応。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#e91e63;
+  --pink-l:#fff0f5;
+  --pink-m:#ffb3ce;
+  --pink-d:#c2185b;
+  --black:#1a1a1a;
+  --gray:#6b7280;
+  --border:#f3e6eb;
+  --r:12px;
+  --sh:0 2px 12px rgba(233,30,99,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--black);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+/* ヘッダー */
+.header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.header-inner{max-width:1100px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--pink-d));display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 2px 8px rgba(233,30,99,.3)}
+.logo-text{font-size:1.1rem;font-weight:900;color:var(--black)}
+.logo-sub{font-size:.65rem;color:var(--pink);letter-spacing:.05em}
+.nav{display:flex;align-items:center;gap:20px;font-size:.875rem;font-weight:500}
+.nav a{color:var(--gray);transition:color .2s}
+.nav a:hover{color:var(--pink)}
+.btn-line{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--pink),var(--pink-d));color:#fff;font-weight:700;border-radius:100px;padding:9px 20px;font-size:.85rem;transition:all .2s;box-shadow:0 3px 12px rgba(233,30,99,.3)}
+.btn-line:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(233,30,99,.4)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--black);margin:5px 0;transition:all .3s}
+
+/* モバイルメニュー */
+.mobile-nav{display:none;background:#fff;border-top:1px solid var(--border);padding:16px}
+.mobile-nav a{display:block;padding:12px 0;border-bottom:1px solid var(--border);font-size:.9rem;color:var(--gray)}
+.mobile-nav .btn-line{display:flex;justify-content:center;margin-top:12px;width:100%}
+
+/* ヒーロー */
+.hero{background:linear-gradient(135deg,#fff0f5 0%,#fff 50%,#fce4ec 100%);padding:48px 16px 40px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,180,210,.4),transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-40px;left:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(233,30,99,.08),transparent 70%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--pink-l);color:var(--pink);font-size:.8rem;font-weight:700;padding:6px 14px;border-radius:100px;border:1px solid var(--pink-m);margin-bottom:20px}
+.hero h1{font-size:clamp(1.6rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:16px;color:var(--black)}
+.hero h1 span{color:var(--pink)}
+.hero-desc{color:var(--gray);font-size:.95rem;max-width:520px;line-height:1.8;margin-bottom:24px}
+.hero-stats{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px}
+.stat-pill{display:inline-flex;align-items:center;gap:6px;background:var(--pink-l);border:1px solid var(--pink-m);border-radius:100px;padding:5px 14px;font-size:.8rem;color:var(--pink);font-weight:500}
+.hero-note{font-size:.72rem;color:#aaa;margin-top:8px}
+
+/* 検索ウィジェット */
+.search-box{background:#fff;border-radius:16px;border:1px solid var(--border);box-shadow:0 4px 24px rgba(233,30,99,.1);overflow:hidden;margin-top:28px}
+.tab-bar{display:flex;border-bottom:1px solid var(--border)}
+.tab-btn{flex:1;padding:14px 8px;font-size:.875rem;font-weight:500;background:#f9f9f9;color:var(--gray);border:none;cursor:pointer;transition:all .2s;border-bottom:2px solid transparent}
+.tab-btn.active{background:#fff;color:var(--pink);font-weight:700;border-bottom-color:var(--pink)}
+.tab-panel{display:none;padding:16px}
+.tab-panel.active{display:block}
+
+/* エリアグリッド */
+.area-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.area-label{display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:.82rem;border:1px solid transparent;transition:all .15s;user-select:none}
+.area-label:hover{background:var(--pink-l)}
+.area-label input{accent-color:var(--pink);width:15px;height:15px;cursor:pointer;flex-shrink:0}
+.area-label.checked{background:var(--pink-l);border-color:var(--pink-m)}
+.area-full{grid-column:1/-1}
+
+/* 駅検索 */
+.station-search-row{display:flex;gap:8px;margin-bottom:12px}
+.station-input{flex:1;border:1px solid #e5e7eb;border-radius:8px;padding:9px 14px;font-size:.875rem;outline:none;font-family:inherit}
+.station-input:focus{border-color:var(--pink)}
+.btn-search{background:#0ea5e9;color:#fff;border:none;border-radius:8px;padding:9px 16px;cursor:pointer;font-size:.875rem}
+.section-head{background:var(--pink-l);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:700;color:var(--pink);margin-bottom:10px}
+
+/* 確定ボタン */
+.confirm-bar{padding:12px 16px 20px;display:flex;justify-content:center}
+.btn-confirm{background:linear-gradient(135deg,var(--pink),var(--pink-d));color:#fff;font-weight:700;border:none;border-radius:100px;padding:14px 48px;font-size:1rem;cursor:pointer;min-width:240px;transition:all .2s;box-shadow:0 4px 16px rgba(233,30,99,.3)}
+.btn-confirm:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(233,30,99,.4)}
+
+/* メインコンテンツ */
+.main{max-width:1100px;margin:0 auto;padding:40px 16px}
+.section{margin-bottom:48px}
+.section-title{font-size:1.3rem;font-weight:900;color:var(--black);padding-bottom:10px;margin-bottom:20px;position:relative}
+.section-title::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:3px;background:linear-gradient(90deg,var(--pink),var(--pink-m));border-radius:2px}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.section-header .section-title{margin-bottom:0}
+.see-all{font-size:.82rem;color:var(--pink);font-weight:500}
+.see-all:hover{text-decoration:underline}
+
+/* 業種ナビ */
+.genre-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.genre-card{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 12px;border-radius:16px;border:2px solid var(--border);transition:all .2s;background:#fff}
+.genre-card:hover{border-color:var(--pink-m);background:var(--pink-l);transform:translateY(-3px)}
+.genre-icon{font-size:2.2rem}
+.genre-name{font-weight:700;font-size:.9rem}
+.genre-count{font-size:.75rem;color:var(--gray)}
+
+/* エリアタグ */
+.tag-list{display:flex;flex-wrap:wrap;gap:8px}
+.area-tag{display:inline-flex;align-items:center;gap:4px;padding:9px 16px;background:#fff;border:1px solid var(--border);border-radius:100px;font-size:.82rem;font-weight:500;transition:all .2s;box-shadow:var(--sh)}
+.area-tag:hover{background:var(--pink-l);border-color:var(--pink-m)}
+.area-tag .cnt{font-size:.72rem;color:var(--pink)}
+.area-tag.more{background:var(--pink-l);border-color:var(--pink-m);color:var(--pink)}
+
+/* 店舗カード */
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.shop-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px;transition:all .2s;box-shadow:var(--sh);display:flex;flex-direction:column}
+.shop-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(233,30,99,.12);border-color:var(--pink-m)}
+.shop-badge{display:inline-block;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:100px;margin-bottom:8px}
+.badge-gb{background:#fce4ec;color:#c2185b}
+.badge-cab{background:#fce4ec;color:#880e4f}
+.badge-lounge{background:#ede7f6;color:#6a1b9a}
+.shop-card-top{display:flex;align-items:start;justify-content:space-between;margin-bottom:4px}
+.shop-area{font-size:.75rem;color:var(--gray)}
+.shop-name{font-size:.95rem;font-weight:700;line-height:1.4;margin-bottom:8px;color:var(--black)}
+.shop-name a:hover{color:var(--pink)}
+.shop-station{font-size:.78rem;color:var(--gray);margin-bottom:10px}
+.pay-row{display:flex;gap:8px;margin-bottom:10px}
+.pay-box{flex:1;border-radius:8px;padding:8px;text-align:center}
+.pay-box.trial{background:var(--pink-l)}
+.pay-box.regular{background:#f9f9f9}
+.pay-label{font-size:.68rem;color:var(--gray);display:block;margin-bottom:2px}
+.pay-val{font-size:.85rem;font-weight:700}
+.pay-box.trial .pay-val{color:var(--pink)}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.tag{display:inline-block;background:var(--pink-l);color:var(--pink);font-size:.7rem;padding:2px 8px;border-radius:100px;border:1px solid var(--pink-m)}
+.card-btns{display:flex;gap:8px;margin-top:auto;padding-top:12px;border-top:1px solid var(--pink-l)}
+.btn-detail{flex:1;text-align:center;padding:8px;font-size:.78rem;font-weight:600;color:var(--pink);border:1px solid var(--pink-m);border-radius:8px;transition:all .2s}
+.btn-detail:hover{background:var(--pink-l)}
+.btn-apply{flex:1;text-align:center;padding:8px;font-size:.78rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--pink),var(--pink-d));border-radius:8px;transition:opacity .2s}
+.btn-apply:hover{opacity:.9}
+
+/* LINE CTA セクション */
+.line-section{background:linear-gradient(135deg,var(--pink-l),#fce4ec);border-radius:20px;padding:32px 28px;border:1px solid var(--pink-m);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.line-section-text h3{font-size:1.2rem;font-weight:900;margin-bottom:8px}
+.line-section-text p{font-size:.85rem;color:var(--gray);line-height:1.7}
+.line-section-right{display:flex;flex-direction:column;align-items:center;gap:12px;flex-shrink:0}
+.btn-line-big{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--pink),var(--pink-d));color:#fff;font-weight:700;border-radius:100px;padding:14px 32px;font-size:1rem;transition:all .2s;box-shadow:0 4px 16px rgba(233,30,99,.3);white-space:nowrap}
+.btn-line-big:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(233,30,99,.4)}
+.qr-img{width:90px;height:90px;border-radius:10px;border:2px solid var(--pink-m);cursor:pointer;transition:opacity .2s}
+.qr-img:hover{opacity:.85}
+.qr-note{font-size:.72rem;color:var(--gray)}
+
+/* 記事リスト */
+.article-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.article-card{display:flex;gap:12px;padding:14px;background:#fff;border:1px solid var(--border);border-radius:12px;transition:all .2s}
+.article-card:hover{border-color:var(--pink-m);background:var(--pink-l)}
+.article-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--pink-l),#fce4ec);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.article-title{font-size:.82rem;font-weight:600;line-height:1.5;color:var(--black)}
+.article-card:hover .article-title{color:var(--pink)}
+.article-date{font-size:.7rem;color:var(--gray);margin-top:4px}
+
+/* フッター */
+.footer{background:#111;color:#fff;padding:48px 16px 24px;margin-top:48px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
+.footer-logo{font-size:1.3rem;font-weight:900;margin-bottom:8px}
+.footer-desc{font-size:.8rem;color:#9ca3af;line-height:1.8}
+.footer-col h4{font-size:.85rem;font-weight:700;color:#f9a8d4;margin-bottom:12px}
+.footer-col a{display:block;font-size:.8rem;color:#9ca3af;margin-bottom:6px;transition:color .2s}
+.footer-col a:hover{color:#f9a8d4}
+.footer-line{background:#1a1a2e;border-radius:12px;padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-line-text{font-weight:700;font-size:.95rem}
+.footer-line-sub{font-size:.8rem;color:#9ca3af;margin-top:2px}
+.footer-bottom{border-top:1px solid #1f2937;padding-top:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:.72rem;color:#6b7280}
+.footer-note{text-align:center}
+
+/* 固定LINEボタン */
+.fixed-line{position:fixed;bottom:24px;right:20px;z-index:200;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.fixed-line a{display:flex;align-items:center;gap:6px;background:#06c755;color:#fff;font-weight:700;border-radius:100px;padding:11px 20px;font-size:.85rem;box-shadow:0 4px 16px rgba(6,199,85,.4);transition:all .2s}
+.fixed-line a:hover{background:#05a847;box-shadow:0 6px 24px rgba(6,199,85,.5)}
+
+/* モバイル固定CTA */
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:199;background:#fff;border-top:1px solid var(--border);padding:10px 16px;box-shadow:0 -4px 16px rgba(233,30,99,.1)}
+.mobile-cta a{display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--pink),var(--pink-d));color:#fff;font-weight:700;border-radius:100px;padding:13px;font-size:.95rem;width:100%}
+
+/* QRモーダル */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;align-items:center;justify-content:center;padding:16px}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:20px;padding:32px 24px;max-width:300px;width:100%;text-align:center}
+.modal-box h3{font-weight:900;font-size:1.1rem;margin-bottom:16px}
+.modal-box img{width:180px;height:180px;border-radius:12px;border:2px solid var(--pink-m);margin-bottom:12px}
+.modal-box p{font-size:.8rem;color:var(--gray);margin-bottom:16px;line-height:1.7}
+.modal-close{font-size:.8rem;color:var(--gray);background:none;border:none;cursor:pointer;margin-top:8px}
+
+/* レスポンシブ */
+@media(max-width:900px){
+  .shop-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .area-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:640px){
+  .nav{display:none}
+  .hamburger{display:block}
+  .hero{padding:32px 16px 28px}
+  .shop-grid{grid-template-columns:1fr}
+  .genre-nav{grid-template-columns:repeat(3,1fr)}
+  .area-grid{grid-template-columns:repeat(2,1fr)}
+  .article-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .line-section{flex-direction:column;text-align:center}
+  .fixed-line{display:none}
+  .mobile-cta{display:block}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .mobile-nav.open{display:block}
+  .hero h1{font-size:1.7rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">🌸</div>
+      <div>
+        <div class="logo-text">東京夜職ナビ</div>
+        <div class="logo-sub">TOKYO YORU NAVI</div>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="girlsbar/">ガールズバー</a>
+      <a href="cabaret/">キャバクラ</a>
+      <a href="lounge/">ラウンジ</a>
+      <a href="articles/">記事</a>
+      <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-line">💬 LINE相談</a>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open')" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav">
+    <a href="girlsbar/">ガールズバー</a>
+    <a href="cabaret/">キャバクラ</a>
+    <a href="lounge/">ラウンジ</a>
+    <a href="articles/">お役立ち記事</a>
+    <a href="about/">サイトについて</a>
+    <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-line">💬 LINEで求人相談する</a>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🌸 東京の夜職求人ポータル</div>
+    <h1>東京の夜職求人を<br><span>エリア・駅</span>から探す</h1>
+    <p class="hero-desc">ガールズバー・キャバクラ・ラウンジの求人を集めた東京特化のポータル。LINE応募で簡単スタート。未経験歓迎の店舗も多数。</p>
+    <div class="hero-stats">
+      <span class="stat-pill">👁️ 累計 <strong>12,847</strong> 人が閲覧</span>
+      <span class="stat-pill">📅 本日 <strong>143</strong> 人</span>
+    </div>
+    <p class="hero-note">最終データ確認日：2026年3月28日</p>
+
+    <!-- 検索ウィジェット -->
+    <div class="search-box">
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('area',this)">エリアを選ぶ</button>
+        <button class="tab-btn" onclick="switchTab('city',this)">市区町村を選ぶ</button>
+        <button class="tab-btn" onclick="switchTab('station',this)">駅を選ぶ</button>
+      </div>
+
+      <!-- エリアタブ -->
+      <div id="tab-area" class="tab-panel active">
+        <div class="area-grid" id="area-grid">
+          <label class="area-label area-full"><input type="checkbox" value="tokyo-all"> <span>東京都すべて</span></label>
+          <label class="area-label"><input type="checkbox" value="池袋"> <span>池袋</span></label>
+          <label class="area-label"><input type="checkbox" value="六本木"> <span>六本木</span></label>
+          <label class="area-label"><input type="checkbox" value="新宿"> <span>新宿</span></label>
+          <label class="area-label"><input type="checkbox" value="歌舞伎町"> <span>歌舞伎町</span></label>
+          <label class="area-label"><input type="checkbox" value="上野"> <span>上野</span></label>
+          <label class="area-label"><input type="checkbox" value="渋谷"> <span>渋谷</span></label>
+          <label class="area-label"><input type="checkbox" value="恵比寿"> <span>恵比寿</span></label>
+          <label class="area-label"><input type="checkbox" value="銀座"> <span>銀座</span></label>
+          <label class="area-label"><input type="checkbox" value="新橋"> <span>新橋</span></label>
+          <label class="area-label"><input type="checkbox" value="赤坂"> <span>赤坂</span></label>
+          <label class="area-label"><input type="checkbox" value="浅草"> <span>浅草</span></label>
+          <label class="area-label"><input type="checkbox" value="東京駅"> <span>東京駅</span></label>
+          <label class="area-label"><input type="checkbox" value="神田"> <span>神田</span></label>
+          <label class="area-label"><input type="checkbox" value="秋葉原"> <span>秋葉原</span></label>
+          <label class="area-label"><input type="checkbox" value="北千住"> <span>北千住</span></label>
+          <label class="area-label"><input type="checkbox" value="錦糸町"> <span>錦糸町</span></label>
+          <label class="area-label"><input type="checkbox" value="門前仲町"> <span>門前仲町</span></label>
+          <label class="area-label"><input type="checkbox" value="葛西"> <span>葛西</span></label>
+          <label class="area-label"><input type="checkbox" value="瑞江"> <span>瑞江</span></label>
+          <label class="area-label"><input type="checkbox" value="小岩"> <span>小岩</span></label>
+          <label class="area-label"><input type="checkbox" value="新小岩"> <span>新小岩</span></label>
+          <label class="area-label"><input type="checkbox" value="五反田"> <span>五反田</span></label>
+          <label class="area-label"><input type="checkbox" value="品川"> <span>品川</span></label>
+          <label class="area-label"><input type="checkbox" value="大井町"> <span>大井町</span></label>
+          <label class="area-label"><input type="checkbox" value="蒲田"> <span>蒲田</span></label>
+          <label class="area-label"><input type="checkbox" value="中野"> <span>中野</span></label>
+          <label class="area-label"><input type="checkbox" value="高円寺"> <span>高円寺</span></label>
+          <label class="area-label"><input type="checkbox" value="荻窪"> <span>荻窪</span></label>
+          <label class="area-label"><input type="checkbox" value="吉祥寺"> <span>吉祥寺</span></label>
+          <label class="area-label"><input type="checkbox" value="高田馬場"> <span>高田馬場</span></label>
+          <label class="area-label"><input type="checkbox" value="練馬"> <span>練馬</span></label>
+          <label class="area-label"><input type="checkbox" value="赤羽"> <span>赤羽</span></label>
+          <label class="area-label"><input type="checkbox" value="板橋"> <span>板橋</span></label>
+          <label class="area-label"><input type="checkbox" value="自由が丘"> <span>自由が丘</span></label>
+          <label class="area-label"><input type="checkbox" value="中目黒"> <span>中目黒</span></label>
+          <label class="area-label"><input type="checkbox" value="目黒"> <span>目黒</span></label>
+          <label class="area-label"><input type="checkbox" value="三軒茶屋"> <span>三軒茶屋</span></label>
+          <label class="area-label"><input type="checkbox" value="下北沢"> <span>下北沢</span></label>
+          <label class="area-label"><input type="checkbox" value="国分寺"> <span>国分寺</span></label>
+          <label class="area-label"><input type="checkbox" value="立川"> <span>立川</span></label>
+          <label class="area-label"><input type="checkbox" value="八王子"> <span>八王子</span></label>
+          <label class="area-label"><input type="checkbox" value="調布"> <span>調布</span></label>
+          <label class="area-label"><input type="checkbox" value="府中"> <span>府中</span></label>
+          <label class="area-label"><input type="checkbox" value="町田"> <span>町田</span></label>
+          <label class="area-label"><input type="checkbox" value="亀有"> <span>亀有</span></label>
+          <label class="area-label"><input type="checkbox" value="ひばりヶ丘"> <span>ひばりヶ丘</span></label>
+          <label class="area-label"><input type="checkbox" value="成増"> <span>成増</span></label>
+          <label class="area-label"><input type="checkbox" value="戸越銀座"> <span>戸越銀座</span></label>
+          <label class="area-label"><input type="checkbox" value="十条"> <span>十条</span></label>
+          <label class="area-label"><input type="checkbox" value="東十条"> <span>東十条</span></label>
+          <label class="area-label"><input type="checkbox" value="分倍河原"> <span>分倍河原</span></label>
+          <label class="area-label"><input type="checkbox" value="梅ヶ丘"> <span>梅ヶ丘</span></label>
+          <label class="area-label"><input type="checkbox" value="経堂"> <span>経堂</span></label>
+          <label class="area-label"><input type="checkbox" value="二子玉川"> <span>二子玉川</span></label>
+          <label class="area-label"><input type="checkbox" value="仙川"> <span>仙川</span></label>
+          <label class="area-label"><input type="checkbox" value="明大前"> <span>明大前</span></label>
+          <label class="area-label"><input type="checkbox" value="浜田山"> <span>浜田山</span></label>
+          <label class="area-label"><input type="checkbox" value="千歳烏山"> <span>千歳烏山</span></label>
+          <label class="area-label"><input type="checkbox" value="千歳船橋"> <span>千歳船橋</span></label>
+          <label class="area-label"><input type="checkbox" value="日暮里"> <span>日暮里</span></label>
+          <label class="area-label"><input type="checkbox" value="西日暮里"> <span>西日暮里</span></label>
+          <label class="area-label"><input type="checkbox" value="竹ノ塚"> <span>竹ノ塚</span></label>
+          <label class="area-label"><input type="checkbox" value="西新井"> <span>西新井</span></label>
+          <label class="area-label"><input type="checkbox" value="平井"> <span>平井</span></label>
+          <label class="area-label"><input type="checkbox" value="西葛西"> <span>西葛西</span></label>
+          <label class="area-label"><input type="checkbox" value="綾瀬"> <span>綾瀬</span></label>
+          <label class="area-label"><input type="checkbox" value="大森"> <span>大森</span></label>
+          <label class="area-label"><input type="checkbox" value="学芸大学"> <span>学芸大学</span></label>
+          <label class="area-label"><input type="checkbox" value="小作"> <span>小作</span></label>
+          <label class="area-label"><input type="checkbox" value="神楽坂"> <span>神楽坂</span></label>
+          <label class="area-label"><input type="checkbox" value="尾山台"> <span>尾山台</span></label>
+          <label class="area-label"><input type="checkbox" value="金町"> <span>金町</span></label>
+          <label class="area-label"><input type="checkbox" value="水道橋"> <span>水道橋</span></label>
+          <label class="area-label"><input type="checkbox" value="亀戸"> <span>亀戸</span></label>
+          <label class="area-label"><input type="checkbox" value="田町"> <span>田町</span></label>
+          <label class="area-label"><input type="checkbox" value="聖蹟桜ヶ丘"> <span>聖蹟桜ヶ丘</span></label>
+          <label class="area-label"><input type="checkbox" value="八幡山"> <span>八幡山</span></label>
+          <label class="area-label"><input type="checkbox" value="目白"> <span>目白</span></label>
+          <label class="area-label"><input type="checkbox" value="泉体育館"> <span>泉体育館</span></label>
+        </div>
+      </div>
+
+      <!-- 市区町村タブ -->
+      <div id="tab-city" class="tab-panel">
+        <div class="area-grid">
+          <label class="area-label"><input type="checkbox" value="千代田区"> <span>千代田区</span></label>
+          <label class="area-label"><input type="checkbox" value="中央区"> <span>中央区</span></label>
+          <label class="area-label"><input type="checkbox" value="港区"> <span>港区</span></label>
+          <label class="area-label"><input type="checkbox" value="新宿区"> <span>新宿区</span></label>
+          <label class="area-label"><input type="checkbox" value="文京区"> <span>文京区</span></label>
+          <label class="area-label"><input type="checkbox" value="台東区"> <span>台東区</span></label>
+          <label class="area-label"><input type="checkbox" value="墨田区"> <span>墨田区</span></label>
+          <label class="area-label"><input type="checkbox" value="江東区"> <span>江東区</span></label>
+          <label class="area-label"><input type="checkbox" value="品川区"> <span>品川区</span></label>
+          <label class="area-label"><input type="checkbox" value="目黒区"> <span>目黒区</span></label>
+          <label class="area-label"><input type="checkbox" value="大田区"> <span>大田区</span></label>
+          <label class="area-label"><input type="checkbox" value="世田谷区"> <span>世田谷区</span></label>
+          <label class="area-label"><input type="checkbox" value="渋谷区"> <span>渋谷区</span></label>
+          <label class="area-label"><input type="checkbox" value="中野区"> <span>中野区</span></label>
+          <label class="area-label"><input type="checkbox" value="杉並区"> <span>杉並区</span></label>
+          <label class="area-label"><input type="checkbox" value="豊島区"> <span>豊島区</span></label>
+          <label class="area-label"><input type="checkbox" value="北区"> <span>北区</span></label>
+          <label class="area-label"><input type="checkbox" value="荒川区"> <span>荒川区</span></label>
+          <label class="area-label"><input type="checkbox" value="板橋区"> <span>板橋区</span></label>
+          <label class="area-label"><input type="checkbox" value="練馬区"> <span>練馬区</span></label>
+          <label class="area-label"><input type="checkbox" value="足立区"> <span>足立区</span></label>
+          <label class="area-label"><input type="checkbox" value="葛飾区"> <span>葛飾区</span></label>
+          <label class="area-label"><input type="checkbox" value="江戸川区"> <span>江戸川区</span></label>
+          <label class="area-label"><input type="checkbox" value="八王子市"> <span>八王子市</span></label>
+          <label class="area-label"><input type="checkbox" value="立川市"> <span>立川市</span></label>
+          <label class="area-label"><input type="checkbox" value="武蔵野市"> <span>武蔵野市</span></label>
+          <label class="area-label"><input type="checkbox" value="調布市"> <span>調布市</span></label>
+          <label class="area-label"><input type="checkbox" value="町田市"> <span>町田市</span></label>
+          <label class="area-label"><input type="checkbox" value="府中市"> <span>府中市</span></label>
+          <label class="area-label"><input type="checkbox" value="多摩市"> <span>多摩市</span></label>
+        </div>
+      </div>
+
+      <!-- 駅タブ -->
+      <div id="tab-station" class="tab-panel">
+        <div class="station-search-row">
+          <input type="text" class="station-input" id="station-input" placeholder="駅名を入力して絞り込み">
+          <button class="btn-search" onclick="filterStations()">🔍</button>
+        </div>
+        <div class="section-head">🚉 駅名を選ぶ</div>
+        <div class="area-grid" id="station-grid">
+          <label class="area-label st-item"><input type="checkbox" value="六本木駅"> <span>六本木駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="赤坂駅"> <span>赤坂駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="新宿駅"> <span>新宿駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="池袋駅"> <span>池袋駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="渋谷駅"> <span>渋谷駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="恵比寿駅"> <span>恵比寿駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="銀座駅"> <span>銀座駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="新橋駅"> <span>新橋駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="上野駅"> <span>上野駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="神田駅"> <span>神田駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="秋葉原駅"> <span>秋葉原駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="北千住駅"> <span>北千住駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="錦糸町駅"> <span>錦糸町駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="門前仲町駅"> <span>門前仲町駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="葛西駅"> <span>葛西駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="自由が丘駅"> <span>自由が丘駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="五反田駅"> <span>五反田駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="蒲田駅"> <span>蒲田駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="中野駅"> <span>中野駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="高田馬場駅"> <span>高田馬場駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="練馬駅"> <span>練馬駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="赤羽駅"> <span>赤羽駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="下北沢駅"> <span>下北沢駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="三軒茶屋駅"> <span>三軒茶屋駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="高円寺駅"> <span>高円寺駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="吉祥寺駅"> <span>吉祥寺駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="国分寺駅"> <span>国分寺駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="立川駅"> <span>立川駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="八王子駅"> <span>八王子駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="調布駅"> <span>調布駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="府中駅"> <span>府中駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="町田駅"> <span>町田駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="東京駅"> <span>東京駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="下赤塚駅"> <span>下赤塚駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="大山駅"> <span>大山駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="分倍河原駅"> <span>分倍河原駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="ひばりヶ丘駅"> <span>ひばりヶ丘駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="清瀬駅"> <span>清瀬駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="梅ヶ丘駅"> <span>梅ヶ丘駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="小作駅"> <span>小作駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="神楽坂駅"> <span>神楽坂駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="尾山台駅"> <span>尾山台駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="金町駅"> <span>金町駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="水道橋駅"> <span>水道橋駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="亀戸駅"> <span>亀戸駅</span></label>
+          <label class="area-label st-item"><input type="checkbox" value="田町駅"> <span>田町駅</span></label>
+        </div>
+      </div>
+
+      <div class="confirm-bar">
+        <button class="btn-confirm" onclick="doSearch()">選択した内容で確定する</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- メイン -->
+<main class="main">
+
+  <!-- 業種ナビ -->
+  <section class="section">
+    <div class="genre-nav">
+      <a href="girlsbar/" class="genre-card">
+        <div class="genre-icon">🍸</div>
+        <div class="genre-name">ガールズバー</div>
+        <div class="genre-count">1191件掲載中</div>
+      </a>
+      <a href="cabaret/" class="genre-card">
+        <div class="genre-icon">💎</div>
+        <div class="genre-name">キャバクラ</div>
+        <div class="genre-count">1103件掲載中</div>
+      </a>
+      <a href="lounge/" class="genre-card">
+        <div class="genre-icon">✨</div>
+        <div class="genre-name">ラウンジ</div>
+        <div class="genre-count">706件掲載中</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 人気エリア -->
+  <section class="section">
+    <h2 class="section-title">人気エリアから探す</h2>
+    <div class="tag-list">
+                                                                        <a href="search/?area=銀座" class="area-tag">📍 銀座エリア <span class="cnt">(97件)</span></a>
+      <a href="search/?area=六本木" class="area-tag">📍 六本木エリア <span class="cnt">(96件)</span></a>
+      <a href="search/?area=渋谷" class="area-tag">📍 渋谷エリア <span class="cnt">(96件)</span></a>
+      <a href="search/?area=新橋" class="area-tag">📍 新橋エリア <span class="cnt">(96件)</span></a>
+      <a href="search/?area=池袋" class="area-tag">📍 池袋エリア <span class="cnt">(94件)</span></a>
+      <a href="search/?area=上野" class="area-tag">📍 上野エリア <span class="cnt">(92件)</span></a>
+      <a href="search/?area=北千住" class="area-tag">📍 北千住エリア <span class="cnt">(88件)</span></a>
+      <a href="search/?area=赤坂" class="area-tag">📍 赤坂エリア <span class="cnt">(87件)</span></a>
+      <a href="search/?area=恵比寿" class="area-tag">📍 恵比寿エリア <span class="cnt">(86件)</span></a>
+      <a href="search/?area=五反田" class="area-tag">📍 五反田エリア <span class="cnt">(79件)</span></a>
+      <a href="search/?area=錦糸町" class="area-tag">📍 錦糸町エリア <span class="cnt">(79件)</span></a>
+      <a href="search/?area=赤羽" class="area-tag">📍 赤羽エリア <span class="cnt">(67件)</span></a>
+      <a href="search/?area=世田谷" class="area-tag">📍 世田谷エリア <span class="cnt">(67件)</span></a>
+      <a href="search/?area=立川" class="area-tag">📍 立川エリア <span class="cnt">(67件)</span></a>
+      <a href="search/?area=町田" class="area-tag">📍 町田エリア <span class="cnt">(66件)</span></a>
+      <a href="search/?area=蒲田" class="area-tag">📍 蒲田エリア <span class="cnt">(65件)</span></a>
+      <a href="search/?area=八王子" class="area-tag">📍 八王子エリア <span class="cnt">(64件)</span></a>
+      <a href="search/?area=高田馬場" class="area-tag">📍 高田馬場エリア <span class="cnt">(57件)</span></a>
+      <a href="search/?area=秋葉原" class="area-tag">📍 秋葉原エリア <span class="cnt">(55件)</span></a>
+      <a href="search/?area=練馬" class="area-tag">📍 練馬エリア <span class="cnt">(51件)</span></a>
+      <a href="search/?area=中野" class="area-tag">📍 中野エリア <span class="cnt">(50件)</span></a>
+      <a href="search/?area=小岩" class="area-tag">📍 小岩エリア <span class="cnt">(44件)</span></a>
+      <a href="search/?area=浅草" class="area-tag">📍 浅草エリア <span class="cnt">(43件)</span></a>
+      <a href="search/?area=葛西" class="area-tag">📍 葛西エリア <span class="cnt">(41件)</span></a>
+      <a href="search/?area=新宿" class="area-tag">📍 新宿・歌舞伎町エリア <span class="cnt">(169件)</span></a>
+      <a href="search/" class="area-tag more">すべてのエリアを見る →</a>
+    </div>
+  </section>
+
+  <!-- LINE CTA -->
+  <section class="section">
+    <div class="line-section">
+      <div class="line-section-text">
+        <h3>気になる求人はLINEで気軽に相談</h3>
+        <p>希望のエリアや条件を伝えるだけ。担当スタッフが丁寧に案内します。<br>相談・登録は完全無料です。</p>
+      </div>
+      <div class="line-section-right">
+        <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-line-big">💬 LINEで求人相談する</a>
+        <img src="line-qr.png" alt="LINE QRコード" class="qr-img" onclick="openModal()">
+        <span class="qr-note">QRコードをスキャンしてもOK</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 新着求人 -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">新着・注目の求人</h2>
+      <a href="search/" class="see-all">すべて見る →</a>
+    </div>
+    <div class="shop-grid">
+
+      <div class="shop-card">
+        <div><span class="shop-badge badge-gb">ガールズバー</span></div>
+        <div class="shop-card-top"><span class="shop-area">📍 歌舞伎町</span></div>
+        <div class="shop-name"><a href="shop/gb-shinjuku-002.html">がーるずばー いのか</a></div>
+        <div class="shop-station">🚉 新宿駅（徒歩3分）</div>
+        <div class="pay-row">
+          <div class="pay-box trial"><span class="pay-label">体入時給</span><span class="pay-val">2,500円〜</span></div>
+          <div class="pay-box regular"><span class="pay-label">本入時給</span><span class="pay-val">3,000円〜</span></div>
+        </div>
+        <div class="tags"><span class="tag">未経験歓迎</span><span class="tag">日払いOK</span><span class="tag">女性スタッフ</span></div>
+        <div class="card-btns">
+          <a href="shop/gb-shinjuku-002.html" class="btn-detail">詳細を見る</a>
+          <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-apply">💬 LINE応募</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div><span class="shop-badge badge-cab">キャバクラ</span></div>
+        <div class="shop-card-top"><span class="shop-area">📍 池袋</span></div>
+        <div class="shop-name"><a href="shop/cab-ikebukuro-002.html">Vivienne 池袋店</a></div>
+        <div class="shop-station">🚉 池袋駅（西口徒歩4分）</div>
+        <div class="pay-row">
+          <div class="pay-box trial"><span class="pay-label">体入時給</span><span class="pay-val">4,000円〜</span></div>
+          <div class="pay-box regular"><span class="pay-label">本入時給</span><span class="pay-val">5,000円〜</span></div>
+        </div>
+        <div class="tags"><span class="tag">ノルマなし</span><span class="tag">日払いOK</span><span class="tag">送迎あり</span></div>
+        <div class="card-btns">
+          <a href="shop/cab-ikebukuro-002.html" class="btn-detail">詳細を見る</a>
+          <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-apply">💬 LINE応募</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div><span class="shop-badge badge-lounge">ラウンジ</span></div>
+        <div class="shop-card-top"><span class="shop-area">📍 六本木</span></div>
+        <div class="shop-name"><a href="shop/lounge-roppongi-002.html">NIKAI 西麻布</a></div>
+        <div class="shop-station">🚉 六本木駅（徒歩12分）</div>
+        <div class="pay-row">
+          <div class="pay-box trial"><span class="pay-label">体入時給</span><span class="pay-val">4,000円〜</span></div>
+          <div class="pay-box regular"><span class="pay-label">本入時給</span><span class="pay-val">5,000円〜</span></div>
+        </div>
+        <div class="tags"><span class="tag">会員制</span><span class="tag">日払いOK</span><span class="tag">私服OK</span></div>
+        <div class="card-btns">
+          <a href="shop/lounge-roppongi-002.html" class="btn-detail">詳細を見る</a>
+          <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-apply">💬 LINE応募</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div><span class="shop-badge badge-cab">キャバクラ</span></div>
+        <div class="shop-card-top"><span class="shop-area">📍 銀座</span></div>
+        <div class="shop-name"><a href="shop/cab-ginza-002.html">Club Lucente 銀座</a></div>
+        <div class="shop-station">🚉 銀座駅（徒歩3分）</div>
+        <div class="pay-row">
+          <div class="pay-box trial"><span class="pay-label">体入時給</span><span class="pay-val">5,000円〜</span></div>
+          <div class="pay-box regular"><span class="pay-label">本入時給</span><span class="pay-val">6,000円〜</span></div>
+        </div>
+        <div class="tags"><span class="tag">高時給</span><span class="tag">ノルマなし</span><span class="tag">売上バック</span></div>
+        <div class="card-btns">
+          <a href="shop/cab-ginza-002.html" class="btn-detail">詳細を見る</a>
+          <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-apply">💬 LINE応募</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div><span class="shop-badge badge-gb">ガールズバー</span></div>
+        <div class="shop-card-top"><span class="shop-area">📍 新橋</span></div>
+        <div class="shop-name"><a href="shop/gb-shimbashi-002.html">an_an 新橋店</a></div>
+        <div class="shop-station">🚉 新橋駅（烏森口徒歩2分）</div>
+        <div class="pay-row">
+          <div class="pay-box trial"><span class="pay-label">体入時給</span><span class="pay-val">2,500円〜</span></div>
+          <div class="pay-box regular"><span class="pay-label">本入時給</span><span class="pay-val">3,000円〜</span></div>
+        </div>
+        <div class="tags"><span class="tag">未経験歓迎</span><span class="tag">日払いOK</span><span class="tag">入店祝い金あり</span></div>
+        <div class="card-btns">
+          <a href="shop/gb-shimbashi-002.html" class="btn-detail">詳細を見る</a>
+          <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-apply">💬 LINE応募</a>
+        </div>
+      </div>
+
+      <div class="shop-card">
+        <div><span class="shop-badge badge-lounge">ラウンジ</span></div>
+        <div class="shop-card-top"><span class="shop-area">📍 赤坂</span></div>
+        <div class="shop-name"><a href="shop/lounge-akasaka-002.html">トトロ 赤坂</a></div>
+        <div class="shop-station">🚉 赤坂見附駅（徒歩2分）</div>
+        <div class="pay-row">
+          <div class="pay-box trial"><span class="pay-label">体入時給</span><span class="pay-val">5,000円〜</span></div>
+          <div class="pay-box regular"><span class="pay-label">本入時給</span><span class="pay-val">7,000円〜</span></div>
+        </div>
+        <div class="tags"><span class="tag">高時給</span><span class="tag">自由シフト</span><span class="tag">送迎あり</span></div>
+        <div class="card-btns">
+          <a href="shop/lounge-akasaka-002.html" class="btn-detail">詳細を見る</a>
+          <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-apply">💬 LINE応募</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 記事 -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">📖 お役立ち記事</h2>
+      <a href="articles/" class="see-all">すべての記事 →</a>
+    </div>
+    <div class="article-grid">
+      <a href="articles/tokyo-area-comparison.html" class="article-card">
+        <div class="article-icon">📄</div>
+        <div>
+          <div class="article-title">東京で夜職求人を探すならどのエリアが良い？未経験向けに比較</div>
+          <div class="article-date">2026-03-27</div>
+        </div>
+      </a>
+      <a href="articles/lounge-vs-cabaret.html" class="article-card">
+        <div class="article-icon">📄</div>
+        <div>
+          <div class="article-title">ラウンジとキャバクラの違いは？東京で働く前に整理したい基礎知識</div>
+          <div class="article-date">2026-03-27</div>
+        </div>
+      </a>
+      <a href="articles/line-apply-checklist.html" class="article-card">
+        <div class="article-icon">📄</div>
+        <div>
+          <div class="article-title">東京の夜職求人でLINE応募前に見るべきチェックリスト</div>
+          <div class="article-date">2026-03-27</div>
+        </div>
+      </a>
+      <a href="articles/shinjuku-nightjob-guide.html" class="article-card">
+        <div class="article-icon">📄</div>
+        <div>
+          <div class="article-title">新宿で夜職を始めたい人向け｜ガールズバー・キャバクラ・ラウンジの選び方</div>
+          <div class="article-date">2026-03-27</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 最終LINE CTA -->
+  <section class="section">
+    <div class="line-section">
+      <div class="line-section-text">
+        <h3>東京夜職ナビにLINEで相談する</h3>
+        <p>エリア・業種・希望条件を伝えるだけ。無料でご案内します。</p>
+      </div>
+      <div class="line-section-right">
+        <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-line-big">💬 LINEで無料相談する</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- フッター -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">🌸 東京夜職ナビ</div>
+        <p class="footer-desc">東京のガールズバー・キャバクラ・ラウンジ求人ポータル。公開情報をもとに整理した信頼性の高い情報を提供しています。</p>
+      </div>
+      <div class="footer-col">
+        <h4>業種から探す</h4>
+        <a href="girlsbar/">ガールズバー求人</a>
+        <a href="cabaret/">キャバクラ求人</a>
+        <a href="lounge/">ラウンジ求人</a>
+      </div>
+      <div class="footer-col">
+        <h4>人気エリア</h4>
+        <a href="search/?area=新宿">新宿エリア</a>
+        <a href="search/?area=池袋">池袋エリア</a>
+        <a href="search/?area=渋谷">渋谷エリア</a>
+        <a href="search/?area=銀座">銀座エリア</a>
+        <a href="search/?area=六本木">六本木エリア</a>
+      </div>
+      <div class="footer-col">
+        <h4>サイト情報</h4>
+        <a href="about/">サイトについて</a>
+        <a href="privacy-policy/">プライバシーポリシー</a>
+        <a href="articles/">お役立ち記事</a>
+      </div>
+    </div>
+    <div class="footer-line">
+      <div>
+        <div class="footer-line-text">気になる求人はLINEで相談</div>
+        <div class="footer-line-sub">エリアや希望条件を伝えるだけ。担当者が丁寧にご案内します。</div>
+      </div>
+      <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-line-big">💬 LINEで相談する</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 東京夜職ナビ. All rights reserved.</span>
+      <span class="footer-note">掲載情報は公開情報をもとに整理したものです。最新情報は店舗へ直接ご確認ください。</span>
+    </div>
+  </div>
+</footer>
+
+<!-- 固定LINEボタン（PC） -->
+<div class="fixed-line">
+  <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+    LINE相談
+  </a>
+</div>
+
+<!-- モバイル固定CTA -->
+<div class="mobile-cta">
+  <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank">💬 LINEで求人相談する（無料）</a>
+</div>
+
+<!-- QRモーダル -->
+<div class="modal-overlay" id="qr-modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <h3>LINEで友達追加</h3>
+    <img src="line-qr.png" alt="LINE QRコード">
+    <p>スマートフォンのカメラで<br>スキャンしてください</p>
+    <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="btn-line-big" style="width:100%;justify-content:center">💬 LINEで開く</a>
+    <br><button class="modal-close" onclick="closeModal()">閉じる</button>
+  </div>
+</div>
+
+<script>
+// タブ切り替え
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// チェックボックスのビジュアル更新
+document.querySelectorAll('.area-label input').forEach(cb => {
+  cb.addEventListener('change', () => {
+    cb.parentElement.classList.toggle('checked', cb.checked);
+  });
+});
+
+// 駅フィルター
+function filterStations() {
+  const q = document.getElementById('station-input').value.trim().toLowerCase();
+  document.querySelectorAll('.st-item').forEach(item => {
+    const name = item.querySelector('span').textContent.toLowerCase();
+    item.style.display = (!q || name.includes(q)) ? '' : 'none';
+  });
+}
+document.getElementById('station-input').addEventListener('input', filterStations);
+
+// 検索確定
+function doSearch() {
+  const activeTab = document.querySelector('.tab-btn.active').textContent;
+  const params = new URLSearchParams();
+  if (activeTab.includes('エリア')) {
+    document.querySelectorAll('#tab-area input:checked').forEach(c => params.append('area', c.value));
+  } else if (activeTab.includes('市区')) {
+    document.querySelectorAll('#tab-city input:checked').forEach(c => params.append('city', c.value));
+  } else {
+    document.querySelectorAll('#tab-station input:checked').forEach(c => params.append('station', c.value));
+  }
+  window.location.href = 'search/' + (params.toString() ? '?' + params.toString() : '');
+}
+
+// QRモーダル
+function openModal() { document.getElementById('qr-modal').classList.add('open'); }
+function closeModal() { document.getElementById('qr-modal').classList.remove('open'); }
+</script>
+</body>
+</html>
