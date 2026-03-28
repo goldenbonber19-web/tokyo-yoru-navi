@@ -12,7 +12,8 @@
       "Bash(while read:*)",
       "Bash(do grep:*)",
       "Bash(done)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(ls /Users/ioka/Downloads/yoru-navi-static/articles/*.html)"
     ]
   }
 }
