@@ -201,6 +201,125 @@ img{max-width:100%}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:.72rem;color:var(--gray-l)}
 .footer-note{text-align:center}
 
+/* ニュースティッカー */
+.news-ticker-wrap{background:linear-gradient(90deg,rgba(201,168,76,.12),rgba(212,160,176,.08));border-bottom:1px solid var(--border);overflow:hidden;position:relative}
+.news-ticker{display:flex;animation:tickerScroll 40s linear infinite;white-space:nowrap;padding:12px 0}
+.news-ticker:hover{animation-play-state:paused}
+.ticker-item{display:inline-flex;align-items:center;gap:6px;padding:0 32px;font-size:.82rem;color:var(--gold-l);font-weight:400;letter-spacing:.02em;flex-shrink:0}
+.ticker-sep{color:rgba(201,168,76,.3);flex-shrink:0}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* 店舗診断ウィジェット */
+.diagnosis-trigger-wrap{text-align:center;padding:48px 20px}
+.diagnosis-trigger{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,var(--gold),var(--pink-m));color:var(--black);font-weight:900;font-size:1.1rem;padding:20px 48px;border-radius:100px;border:none;cursor:pointer;box-shadow:0 6px 30px rgba(201,168,76,.4);transition:all .4s;letter-spacing:.04em;font-family:'Noto Serif JP',serif;animation:pulseGlow 2.5s ease-in-out infinite}
+.diagnosis-trigger:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 12px 40px rgba(201,168,76,.6)}
+@keyframes pulseGlow{0%,100%{box-shadow:0 6px 30px rgba(201,168,76,.4)}50%{box-shadow:0 6px 40px rgba(201,168,76,.65)}}
+.diag-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);z-index:1100;align-items:center;justify-content:center;padding:16px}
+.diag-modal-overlay.open{display:flex}
+.diag-modal{background:linear-gradient(160deg,var(--navy-l),var(--navy-m));border:1px solid var(--border);border-radius:24px;padding:40px 32px;max-width:480px;width:100%;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.6);animation:diagSlideUp .4s ease}
+@keyframes diagSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.diag-close{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--gray);font-size:1.4rem;cursor:pointer;transition:color .2s}
+.diag-close:hover{color:var(--gold)}
+.diag-progress{display:flex;gap:8px;margin-bottom:28px}
+.diag-dot{flex:1;height:3px;border-radius:4px;background:rgba(201,168,76,.15);transition:background .3s}
+.diag-dot.active{background:var(--gold)}
+.diag-dot.done{background:var(--gold)}
+.diag-title{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:8px;text-align:center}
+.diag-subtitle{font-size:.85rem;color:var(--gray);margin-bottom:24px;text-align:center}
+.diag-options{display:flex;flex-direction:column;gap:10px}
+.diag-opt{padding:14px 20px;border-radius:12px;border:1px solid var(--border);background:rgba(201,168,76,.04);color:var(--white);font-size:.9rem;font-weight:500;cursor:pointer;transition:all .25s;text-align:center}
+.diag-opt:hover{background:rgba(201,168,76,.12);border-color:rgba(201,168,76,.4);transform:scale(1.02)}
+.diag-opt.selected{background:rgba(201,168,76,.18);border-color:var(--gold);color:var(--gold)}
+.diag-result{display:none;text-align:center}
+.diag-result.show{display:block;animation:diagSlideUp .4s ease}
+.diag-result-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--black);font-weight:900;font-size:.78rem;padding:6px 18px;border-radius:100px;margin-bottom:16px;letter-spacing:.06em}
+.diag-result h3{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:700;color:var(--gold);margin-bottom:12px}
+.diag-result-desc{font-size:.88rem;color:var(--gray);line-height:1.8;margin-bottom:24px}
+.diag-result-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:24px}
+.diag-result-tag{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);color:var(--gold-l);font-size:.75rem;padding:5px 14px;border-radius:100px}
+.diag-line-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--black);font-weight:700;font-size:.95rem;padding:14px 36px;border-radius:100px;border:none;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(201,168,76,.3)}
+.diag-line-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,.5)}
+.diag-retry{display:inline-block;margin-top:14px;color:var(--gray);font-size:.8rem;cursor:pointer;background:none;border:none;transition:color .2s}
+.diag-retry:hover{color:var(--gold)}
+
+/* SNSフィードセクション */
+.sns-section{padding:48px 20px}
+.sns-inner{max-width:1100px;margin:0 auto}
+.sns-title{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:700;color:var(--white);padding-bottom:12px;margin-bottom:24px;position:relative;letter-spacing:.02em}
+.sns-title::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:2px;background:linear-gradient(90deg,var(--gold),var(--pink-d));border-radius:2px}
+.sns-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.sns-card{background:linear-gradient(145deg,rgba(212,160,176,.08),rgba(201,168,76,.06));border:1px solid rgba(212,160,176,.12);border-radius:16px;padding:20px;transition:all .3s;position:relative;overflow:hidden}
+.sns-card::before{content:'';position:absolute;top:-40px;right:-40px;width:100px;height:100px;background:radial-gradient(circle,rgba(201,168,76,.08),transparent 60%);pointer-events:none}
+.sns-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.3);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.sns-card-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.sns-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--pink-d),var(--gold));display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.sns-username{font-size:.78rem;color:var(--gold-l);font-weight:500}
+.sns-handle{font-size:.68rem;color:var(--gray-l)}
+.sns-body{font-size:.82rem;color:var(--white);line-height:1.7;margin-bottom:12px}
+.sns-hashtags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.sns-hashtag{font-size:.72rem;color:var(--pink-d);font-weight:500}
+.sns-footer{display:flex;align-items:center;gap:16px;font-size:.72rem;color:var(--gray)}
+.sns-likes{color:var(--pink-d)}
+
+/* 求人自動更新バナー */
+.new-jobs-section{padding:48px 20px}
+.new-jobs-inner{max-width:1100px;margin:0 auto}
+.new-jobs-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.new-jobs-title{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:700;color:var(--white);padding-bottom:12px;position:relative;letter-spacing:.02em}
+.new-jobs-title::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-d));border-radius:2px}
+.new-jobs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.new-job-card{background:var(--navy-l);border:1px solid var(--border);border-radius:14px;padding:18px;transition:all .3s;position:relative}
+.new-job-card:hover{transform:translateY(-3px);border-color:rgba(201,168,76,.3);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.new-job-card::after{content:'NEW';position:absolute;top:12px;right:12px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--black);font-size:.6rem;font-weight:900;padding:3px 10px;border-radius:100px;letter-spacing:.06em}
+.nj-type{font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:100px;display:inline-block;margin-bottom:6px}
+.nj-gb{background:rgba(212,160,176,.15);color:var(--pink)}
+.nj-cab{background:rgba(201,168,76,.12);color:var(--gold)}
+.nj-lounge{background:rgba(167,139,250,.12);color:#a78bfa}
+.nj-area{font-size:.75rem;color:var(--gray);margin-bottom:4px}
+.nj-name{font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:6px}
+.nj-pay{font-size:.82rem;color:var(--gold-l);margin-bottom:10px}
+.nj-btn{display:block;text-align:center;padding:9px;font-size:.78rem;font-weight:700;color:var(--black);background:linear-gradient(135deg,var(--gold),var(--gold-d));border-radius:8px;transition:all .3s}
+.nj-btn:hover{box-shadow:0 4px 16px rgba(201,168,76,.3);transform:translateY(-1px)}
+.new-jobs-more{display:flex;justify-content:center;margin-top:20px}
+.new-jobs-more a{display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-size:.88rem;font-weight:500;transition:color .2s}
+.new-jobs-more a:hover{color:var(--gold-l)}
+
+/* AIチャットボットウィジェット */
+.chatbot-trigger{position:fixed;bottom:24px;left:20px;z-index:200;animation:float 3s ease-in-out infinite}
+.chatbot-btn{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--pink-d),var(--pink-m));color:var(--white);font-weight:700;border-radius:100px;padding:14px 22px;font-size:.85rem;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(212,160,176,.4);transition:all .3s}
+.chatbot-btn:hover{box-shadow:0 8px 28px rgba(212,160,176,.55);transform:translateY(-2px)}
+.chatbot-window{display:none;position:fixed;bottom:80px;left:20px;z-index:201;width:340px;max-height:480px;background:var(--navy-l);border:1px solid var(--border);border-radius:20px;box-shadow:0 16px 48px rgba(0,0,0,.5);overflow:hidden;animation:diagSlideUp .3s ease}
+.chatbot-window.open{display:flex;flex-direction:column}
+.chatbot-header{padding:16px 20px;background:linear-gradient(135deg,rgba(212,160,176,.12),rgba(201,168,76,.08));border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.chatbot-header-left{display:flex;align-items:center;gap:10px}
+.chatbot-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--pink-d),var(--gold));display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.chatbot-header-text{font-size:.85rem;font-weight:700;color:var(--white)}
+.chatbot-header-sub{font-size:.68rem;color:var(--gray)}
+.chatbot-close{background:none;border:none;color:var(--gray);font-size:1.2rem;cursor:pointer;transition:color .2s}
+.chatbot-close:hover{color:var(--gold)}
+.chatbot-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;max-height:300px}
+.chat-bubble{max-width:85%;padding:12px 16px;border-radius:16px;font-size:.82rem;line-height:1.6;animation:diagSlideUp .3s ease}
+.chat-bubble.bot{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.12);color:var(--white);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-bubble.user{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--black);align-self:flex-end;border-bottom-right-radius:4px;font-weight:500}
+.chat-options{display:flex;flex-direction:column;gap:6px;padding:12px 16px;border-top:1px solid var(--border)}
+.chat-opt-btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.04);color:var(--white);font-size:.78rem;cursor:pointer;transition:all .2s;text-align:left}
+.chat-opt-btn:hover{background:rgba(201,168,76,.12);border-color:rgba(201,168,76,.4)}
+.chat-line-btn{padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--black);font-size:.78rem;font-weight:700;cursor:pointer;transition:all .2s;text-align:center}
+.chat-line-btn:hover{box-shadow:0 4px 16px rgba(201,168,76,.3)}
+
+@media(max-width:900px){
+  .sns-grid{grid-template-columns:repeat(2,1fr)}
+  .new-jobs-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .sns-grid{grid-template-columns:1fr}
+  .new-jobs-grid{grid-template-columns:1fr}
+  .diagnosis-trigger{font-size:.95rem;padding:16px 32px}
+  .diag-modal{padding:28px 20px;margin:12px}
+  .chatbot-window{left:12px;right:12px;width:auto;bottom:72px}
+  .chatbot-trigger{bottom:16px;left:12px}
+}
+
 /* 固定LINEボタン */
 .fixed-line{position:fixed;bottom:24px;right:20px;z-index:200;animation:float 3s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
@@ -484,6 +603,112 @@ img{max-width:100%}
     </div>
   </div>
 </section>
+
+<!-- 【5】ニュースティッカー -->
+<div class="news-ticker-wrap">
+  <div class="news-ticker" id="news-ticker">
+    <span class="ticker-item">🆕 池袋エリアに新着求人追加</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">💰 銀座高時給求人更新</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">📍 渋谷エリア人気上昇中</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">✨ 六本木ラウンジ新規掲載</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">🎉 新宿エリア未経験歓迎求人増加中</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">💎 赤坂エリア高級ラウンジ募集開始</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">🆕 上野・北千住エリア新着求人あり</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">💰 恵比寿エリア体入時給UP店舗あり</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">📍 新橋・銀座エリア日払いOK求人多数</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">✨ 全エリア送迎あり求人を特集中</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">🆕 池袋エリアに新着求人追加</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">💰 銀座高時給求人更新</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">📍 渋谷エリア人気上昇中</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">✨ 六本木ラウンジ新規掲載</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">🎉 新宿エリア未経験歓迎求人増加中</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">💎 赤坂エリア高級ラウンジ募集開始</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">🆕 上野・北千住エリア新着求人あり</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">💰 恵比寿エリア体入時給UP店舗あり</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">📍 新橋・銀座エリア日払いOK求人多数</span><span class="ticker-sep">｜</span>
+    <span class="ticker-item">✨ 全エリア送迎あり求人を特集中</span><span class="ticker-sep">｜</span>
+  </div>
+</div>
+
+<!-- 【1】店舗診断ウィジェット -->
+<div class="diagnosis-trigger-wrap">
+  <button class="diagnosis-trigger" onclick="openDiagnosis()">✦ あなたに合うお店を診断する</button>
+</div>
+
+<!-- 診断モーダル -->
+<div class="diag-modal-overlay" id="diag-overlay" onclick="if(event.target===this)closeDiagnosis()">
+  <div class="diag-modal">
+    <button class="diag-close" onclick="closeDiagnosis()">&times;</button>
+    <div class="diag-progress">
+      <div class="diag-dot active" id="diag-dot-0"></div>
+      <div class="diag-dot" id="diag-dot-1"></div>
+      <div class="diag-dot" id="diag-dot-2"></div>
+    </div>
+    <div id="diag-questions">
+      <!-- Q1 -->
+      <div class="diag-step" id="diag-step-0">
+        <div class="diag-title">Q1. 希望エリアは？</div>
+        <div class="diag-subtitle">気になるエリアを選んでください</div>
+        <div class="diag-options">
+          <button class="diag-opt" onclick="diagSelect(0,'新宿')">新宿</button>
+          <button class="diag-opt" onclick="diagSelect(0,'池袋')">池袋</button>
+          <button class="diag-opt" onclick="diagSelect(0,'渋谷')">渋谷</button>
+          <button class="diag-opt" onclick="diagSelect(0,'銀座')">銀座</button>
+          <button class="diag-opt" onclick="diagSelect(0,'六本木')">六本木</button>
+          <button class="diag-opt" onclick="diagSelect(0,'その他')">その他</button>
+        </div>
+      </div>
+      <!-- Q2 -->
+      <div class="diag-step" id="diag-step-1" style="display:none">
+        <div class="diag-title">Q2. 希望時給は？</div>
+        <div class="diag-subtitle">目安の希望時給を選んでください</div>
+        <div class="diag-options">
+          <button class="diag-opt" onclick="diagSelect(1,'〜1500円')">〜1,500円</button>
+          <button class="diag-opt" onclick="diagSelect(1,'1500〜2500円')">1,500〜2,500円</button>
+          <button class="diag-opt" onclick="diagSelect(1,'2500円以上')">2,500円以上</button>
+        </div>
+      </div>
+      <!-- Q3 -->
+      <div class="diag-step" id="diag-step-2" style="display:none">
+        <div class="diag-title">Q3. 夜職経験は？</div>
+        <div class="diag-subtitle">現在の経験レベルを教えてください</div>
+        <div class="diag-options">
+          <button class="diag-opt" onclick="diagSelect(2,'未経験')">未経験</button>
+          <button class="diag-opt" onclick="diagSelect(2,'少しある')">少しある</button>
+          <button class="diag-opt" onclick="diagSelect(2,'経験あり')">経験あり</button>
+        </div>
+      </div>
+    </div>
+    <!-- 結果 -->
+    <div class="diag-result" id="diag-result">
+      <div class="diag-result-badge">DIAGNOSIS RESULT</div>
+      <h3 id="diag-result-title"></h3>
+      <p class="diag-result-desc" id="diag-result-desc"></p>
+      <div class="diag-result-tags" id="diag-result-tags"></div>
+      <a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="diag-line-btn">💬 このタイプの求人をLINEで探す</a>
+      <br><button class="diag-retry" onclick="diagReset()">もう一度診断する</button>
+    </div>
+  </div>
+</div>
+
+<!-- 【4】求人自動更新風バナー -->
+<div class="new-jobs-section">
+  <div class="new-jobs-inner">
+    <div class="new-jobs-header">
+      <h2 class="new-jobs-title">🆕 本日の新着・更新求人</h2>
+    </div>
+    <div class="new-jobs-grid" id="new-jobs-grid"></div>
+    <div class="new-jobs-more"><a href="search/">もっと見る →</a></div>
+  </div>
+</div>
+
+<!-- 【3】SNSフィード風セクション -->
+<div class="sns-section">
+  <div class="sns-inner">
+    <h2 class="sns-title">みんなの夜職トーク</h2>
+    <div class="sns-grid" id="sns-grid"></div>
+  </div>
+</div>
 
 <!-- メイン -->
 <main class="main">
@@ -829,6 +1054,169 @@ function doSearch() {
 // QRモーダル
 function openModal() { document.getElementById('qr-modal').classList.add('open'); }
 function closeModal() { document.getElementById('qr-modal').classList.remove('open'); }
+
+// 【1】店舗診断
+let diagAnswers = [null, null, null];
+function openDiagnosis() { document.getElementById('diag-overlay').classList.add('open'); }
+function closeDiagnosis() { document.getElementById('diag-overlay').classList.remove('open'); diagReset(); }
+function diagSelect(step, val) {
+  diagAnswers[step] = val;
+  document.querySelectorAll('#diag-step-' + step + ' .diag-opt').forEach(b => b.classList.remove('selected'));
+  event.target.classList.add('selected');
+  setTimeout(() => {
+    if (step < 2) {
+      document.getElementById('diag-step-' + step).style.display = 'none';
+      document.getElementById('diag-step-' + (step+1)).style.display = 'block';
+      document.getElementById('diag-dot-' + (step+1)).classList.add('active');
+      document.getElementById('diag-dot-' + step).classList.add('done');
+    } else {
+      showDiagResult();
+    }
+  }, 300);
+}
+function showDiagResult() {
+  document.getElementById('diag-questions').style.display = 'none';
+  const area = diagAnswers[0], pay = diagAnswers[1], exp = diagAnswers[2];
+  let title, desc, tags;
+  if (pay === '2500円以上' && exp === '経験あり') {
+    title = '高収入キャバクラ・ラウンジタイプ';
+    desc = area + 'エリアで経験を活かせる高時給のキャバクラ・ラウンジがおすすめ。指名バックや売上インセンティブで月収50万円以上も狙えます。';
+    tags = ['高時給','経験者優遇','売上バック','指名制度','送迎あり'];
+  } else if (pay === '2500円以上' && exp !== '経験あり') {
+    title = 'ラウンジ・会員制バータイプ';
+    desc = area + 'エリアの落ち着いた雰囲気のラウンジがぴったり。未経験でも丁寧な研修があるお店が多く、高時給を目指せます。';
+    tags = ['未経験OK','研修充実','高時給','落ち着いた雰囲気','日払いOK'];
+  } else if (exp === '未経験') {
+    title = 'アットホームガールズバータイプ';
+    desc = area + 'エリアの未経験歓迎・カウンター越しで安心のガールズバーがおすすめ。私服OKや髪型自由など自由度が高いお店が多数。';
+    tags = ['未経験歓迎','私服OK','カウンター接客','日払いOK','短時間OK'];
+  } else {
+    title = 'バランス型キャバクラタイプ';
+    desc = area + 'エリアで経験を活かしつつ無理なく働けるキャバクラがおすすめ。ノルマなしで自分のペースで稼げるお店を厳選。';
+    tags = ['ノルマなし','自由シフト','日払いOK','経験者歓迎','駅チカ'];
+  }
+  document.getElementById('diag-result-title').textContent = title;
+  document.getElementById('diag-result-desc').textContent = desc;
+  const tagsEl = document.getElementById('diag-result-tags');
+  tagsEl.innerHTML = tags.map(t => '<span class="diag-result-tag">' + t + '</span>').join('');
+  document.getElementById('diag-result').classList.add('show');
+  document.querySelectorAll('.diag-dot').forEach(d => d.classList.add('done'));
+}
+function diagReset() {
+  diagAnswers = [null, null, null];
+  document.getElementById('diag-questions').style.display = 'block';
+  [0,1,2].forEach(i => {
+    document.getElementById('diag-step-' + i).style.display = i === 0 ? 'block' : 'none';
+    document.getElementById('diag-dot-' + i).classList.remove('active','done');
+  });
+  document.getElementById('diag-dot-0').classList.add('active');
+  document.querySelectorAll('.diag-opt').forEach(b => b.classList.remove('selected'));
+  document.getElementById('diag-result').classList.remove('show');
+}
+
+// 【2】AIチャットボット
+const chatbotData = {
+  '未経験でも大丈夫？': 'はい、もちろんです！東京夜職ナビに掲載されている求人の約7割が「未経験歓迎」です。特にガールズバーはカウンター越しの接客なので、初めての方でも安心してスタートできますよ。',
+  '時給はいくら？': '業種やエリアによって異なりますが、ガールズバーで1,500〜3,000円、キャバクラで3,000〜6,000円、ラウンジで4,000〜8,000円が目安です。体験入店でも同額の時給が出るお店が多いです！',
+  'どのエリアがいい？': '人気なのは新宿・池袋・銀座・六本木です。新宿・池袋は求人数が多く未経験向け、銀座・六本木は高時給が特徴。自宅からのアクセスも考慮して選ぶのがおすすめです。',
+  '体験入店って何？': '体験入店（体入）は、本入店前にお試しで1日働ける制度です。時給も通常と同額もらえ、お店の雰囲気やスタッフの対応を確認できます。合わなければ断ってOKなので気軽に試せます！',
+  'LINEで相談したい': 'ぜひLINEでお気軽にご相談ください！エリアや希望条件をお伝えいただければ、担当スタッフが丁寧にご案内します。相談は完全無料です。'
+};
+let chatbotOpen = false;
+function toggleChatbot() {
+  chatbotOpen = !chatbotOpen;
+  document.getElementById('chatbot-window').classList.toggle('open', chatbotOpen);
+}
+function chatAnswer(question) {
+  const msgs = document.getElementById('chatbot-messages');
+  const userBubble = document.createElement('div');
+  userBubble.className = 'chat-bubble user';
+  userBubble.textContent = question;
+  msgs.appendChild(userBubble);
+  setTimeout(() => {
+    const botBubble = document.createElement('div');
+    botBubble.className = 'chat-bubble bot';
+    botBubble.textContent = chatbotData[question];
+    msgs.appendChild(botBubble);
+    msgs.scrollTop = msgs.scrollHeight;
+    const opts = document.getElementById('chatbot-options');
+    opts.innerHTML = '<a href="https://line.me/ti/p/gJNrcxnXz3" target="_blank" class="chat-line-btn">💬 もっと詳しくLINEで聞く</a>';
+    setTimeout(() => {
+      opts.innerHTML += '<button class="chat-opt-btn" onclick="resetChatOptions()">他の質問をする</button>';
+    }, 500);
+  }, 600);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function resetChatOptions() {
+  const opts = document.getElementById('chatbot-options');
+  opts.innerHTML = Object.keys(chatbotData).map(q => '<button class="chat-opt-btn" onclick="chatAnswer(\'' + q + '\')">' + q + '</button>').join('');
+}
+
+// 【3】SNSフィード
+const snsPosts = [
+  { user:'みさき',handle:'@misaki_night',icon:'🌙',body:'体入3件目で理想のお店見つけた！銀座のラウンジ、雰囲気良すぎる✨',hashtags:['#東京夜職','#銀座ラウンジ','#体験入店'],likes:248},
+  { user:'あいり',handle:'@airi_gb',icon:'🍸',body:'未経験でガールズバー始めて3ヶ月。もう慣れた！楽しい💕',hashtags:['#ガールズバー求人','#未経験歓迎','#池袋'],likes:312},
+  { user:'れいな',handle:'@reina_cab',icon:'💎',body:'今月の指名本数更新！やっぱりキャバは頑張った分だけ返ってくる🔥',hashtags:['#キャバクラ求人','#指名バック','#新宿'],likes:189},
+  { user:'ゆうか',handle:'@yuuka_work',icon:'✨',body:'日払いで週3。大学との両立もバッチリ📚 Wワーク最高！',hashtags:['#日払いOK','#Wワーク','#学生歓迎'],likes:276},
+  { user:'さら',handle:'@sara_lounge',icon:'🌟',body:'六本木のラウンジに転職して時給2000円UP😭嬉しすぎ！',hashtags:['#東京夜職','#六本木','#高時給'],likes:421},
+  { user:'ひなた',handle:'@hinata_night',icon:'🌸',body:'渋谷のガールズバー、スタッフさん優しくて安心して働ける🥺',hashtags:['#渋谷','#ガールズバー求人','#未経験歓迎'],likes:198},
+  { user:'まお',handle:'@mao_ginza',icon:'👑',body:'銀座で働き始めて半年。接客スキル上がったって友達に言われた😊',hashtags:['#銀座','#キャバクラ求人','#接客スキル'],likes:334},
+  { user:'りこ',handle:'@riko_night',icon:'💫',body:'送迎あるから終電気にしなくていいの最高。赤坂おすすめ！',hashtags:['#赤坂','#送迎あり','#ラウンジ求人'],likes:267}
+];
+const snsGrid = document.getElementById('sns-grid');
+snsPosts.forEach(p => {
+  snsGrid.innerHTML += '<div class="sns-card"><div class="sns-card-header"><div class="sns-avatar">' + p.icon + '</div><div><div class="sns-username">' + p.user + '</div><div class="sns-handle">' + p.handle + '</div></div></div><div class="sns-body">' + p.body + '</div><div class="sns-hashtags">' + p.hashtags.map(h => '<span class="sns-hashtag">' + h + '</span>').join(' ') + '</div><div class="sns-footer"><span class="sns-likes">♥ ' + p.likes + '</span><span>コメント</span><span>シェア</span></div></div>';
+});
+
+// 【4】求人自動更新バナー
+const jobPool = [
+  {type:'gb',cls:'nj-gb',label:'ガールズバー',area:'池袋',name:'Girl\'s Bar LUNA',pay:'時給 2,500円〜',link:'search/?area=池袋'},
+  {type:'cab',cls:'nj-cab',label:'キャバクラ',area:'新宿',name:'Club RICHE 歌舞伎町',pay:'時給 4,000円〜',link:'search/?area=新宿'},
+  {type:'lounge',cls:'nj-lounge',label:'ラウンジ',area:'六本木',name:'Lounge EDEN',pay:'時給 5,000円〜',link:'search/?area=六本木'},
+  {type:'gb',cls:'nj-gb',label:'ガールズバー',area:'渋谷',name:'Bar Honey 渋谷',pay:'時給 2,000円〜',link:'search/?area=渋谷'},
+  {type:'cab',cls:'nj-cab',label:'キャバクラ',area:'銀座',name:'CLUB GRAND 銀座',pay:'時給 6,000円〜',link:'search/?area=銀座'},
+  {type:'lounge',cls:'nj-lounge',label:'ラウンジ',area:'赤坂',name:'Lounge Sophia 赤坂',pay:'時給 4,500円〜',link:'search/?area=赤坂'},
+  {type:'gb',cls:'nj-gb',label:'ガールズバー',area:'上野',name:'Girl\'s Cafe MOCA',pay:'時給 1,800円〜',link:'search/?area=上野'},
+  {type:'cab',cls:'nj-cab',label:'キャバクラ',area:'北千住',name:'Club Tiara 北千住',pay:'時給 3,500円〜',link:'search/?area=北千住'},
+  {type:'lounge',cls:'nj-lounge',label:'ラウンジ',area:'恵比寿',name:'Lounge MIST 恵比寿',pay:'時給 4,000円〜',link:'search/?area=恵比寿'},
+  {type:'gb',cls:'nj-gb',label:'ガールズバー',area:'新橋',name:'GirlsBar SPARK',pay:'時給 2,200円〜',link:'search/?area=新橋'},
+  {type:'cab',cls:'nj-cab',label:'キャバクラ',area:'五反田',name:'Club Jewel 五反田',pay:'時給 3,800円〜',link:'search/?area=五反田'},
+  {type:'lounge',cls:'nj-lounge',label:'ラウンジ',area:'錦糸町',name:'Lounge AURA',pay:'時給 3,500円〜',link:'search/?area=錦糸町'}
+];
+function shuffleJobs() {
+  const shuffled = jobPool.sort(() => Math.random() - 0.5).slice(0, 6);
+  const grid = document.getElementById('new-jobs-grid');
+  grid.innerHTML = shuffled.map(j => '<div class="new-job-card"><span class="nj-type ' + j.cls + '">' + j.label + '</span><div class="nj-area">📍 ' + j.area + '</div><div class="nj-name">' + j.name + '</div><div class="nj-pay">💰 ' + j.pay + '</div><a href="' + j.link + '" class="nj-btn">求人を見る</a></div>').join('');
+}
+shuffleJobs();
 </script>
+
+<!-- 【2】AIチャットボットウィジェット -->
+<div class="chatbot-trigger">
+  <button class="chatbot-btn" onclick="toggleChatbot()">💬 AI相談</button>
+</div>
+<div class="chatbot-window" id="chatbot-window">
+  <div class="chatbot-header">
+    <div class="chatbot-header-left">
+      <div class="chatbot-avatar">✦</div>
+      <div>
+        <div class="chatbot-header-text">夜職ナビ AI相談</div>
+        <div class="chatbot-header-sub">お気軽にご質問ください</div>
+      </div>
+    </div>
+    <button class="chatbot-close" onclick="toggleChatbot()">&times;</button>
+  </div>
+  <div class="chatbot-messages" id="chatbot-messages">
+    <div class="chat-bubble bot">こんにちは！東京夜職ナビです✨<br>気になることを選んでください。</div>
+  </div>
+  <div class="chat-options" id="chatbot-options">
+    <button class="chat-opt-btn" onclick="chatAnswer('未経験でも大丈夫？')">未経験でも大丈夫？</button>
+    <button class="chat-opt-btn" onclick="chatAnswer('時給はいくら？')">時給はいくら？</button>
+    <button class="chat-opt-btn" onclick="chatAnswer('どのエリアがいい？')">どのエリアがいい？</button>
+    <button class="chat-opt-btn" onclick="chatAnswer('体験入店って何？')">体験入店って何？</button>
+    <button class="chat-opt-btn" onclick="chatAnswer('LINEで相談したい')">LINEで相談したい</button>
+  </div>
+</div>
+
 </body>
 </html>
