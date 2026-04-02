@@ -663,9 +663,10 @@ img{max-width:100%}
         <div class="diag-title">Q2. 希望時給は？</div>
         <div class="diag-subtitle">目安の希望時給を選んでください</div>
         <div class="diag-options">
-          <button class="diag-opt" onclick="diagSelect(1,'〜1500円')">〜1,500円</button>
-          <button class="diag-opt" onclick="diagSelect(1,'1500〜2500円')">1,500〜2,500円</button>
-          <button class="diag-opt" onclick="diagSelect(1,'2500円以上')">2,500円以上</button>
+          <button class="diag-opt" onclick="diagSelect(1,'2000円以上')">2,000円以上</button>
+          <button class="diag-opt" onclick="diagSelect(1,'3000円以上')">3,000円以上</button>
+          <button class="diag-opt" onclick="diagSelect(1,'5000円以上')">5,000円以上</button>
+          <button class="diag-opt" onclick="diagSelect(1,'それ以上')">それ以上（高収入重視）</button>
         </div>
       </div>
       <!-- Q3 -->
@@ -1078,22 +1079,22 @@ function showDiagResult() {
   document.getElementById('diag-questions').style.display = 'none';
   const area = diagAnswers[0], pay = diagAnswers[1], exp = diagAnswers[2];
   let title, desc, tags;
-  if (pay === '2500円以上' && exp === '経験あり') {
-    title = '高収入キャバクラ・ラウンジタイプ';
-    desc = area + 'エリアで経験を活かせる高時給のキャバクラ・ラウンジがおすすめ。指名バックや売上インセンティブで月収50万円以上も狙えます。';
-    tags = ['高時給','経験者優遇','売上バック','指名制度','送迎あり'];
-  } else if (pay === '2500円以上' && exp !== '経験あり') {
-    title = 'ラウンジ・会員制バータイプ';
-    desc = area + 'エリアの落ち着いた雰囲気のラウンジがぴったり。未経験でも丁寧な研修があるお店が多く、高時給を目指せます。';
-    tags = ['未経験OK','研修充実','高時給','落ち着いた雰囲気','日払いOK'];
-  } else if (exp === '未経験') {
-    title = 'アットホームガールズバータイプ';
-    desc = area + 'エリアの未経験歓迎・カウンター越しで安心のガールズバーがおすすめ。私服OKや髪型自由など自由度が高いお店が多数。';
-    tags = ['未経験歓迎','私服OK','カウンター接客','日払いOK','短時間OK'];
-  } else {
+  if (pay === 'それ以上') {
+    title = '会員制・高級ラウンジタイプ';
+    desc = area + 'エリアの会員制ラウンジ・高級ラウンジがおすすめ。銀座・六本木・赤坂を中心に、VIP対応のハイクラス店舗で圧倒的な高収入が期待できます。';
+    tags = ['会員制','高収入','VIP対応','送迎あり','売上バック'];
+  } else if (pay === '5000円以上') {
+    title = '高単価キャバクラ・ラウンジタイプ';
+    desc = '銀座・六本木・赤坂エリアの高単価店がおすすめ。' + area + 'エリアご希望の場合も近隣の高時給店舗をご紹介可能。指名バックや売上インセンティブで月収50万円以上も狙えます。';
+    tags = ['高時給','銀座・六本木・赤坂','指名制度','売上バック','経験者優遇'];
+  } else if (pay === '3000円以上') {
     title = 'バランス型キャバクラタイプ';
-    desc = area + 'エリアで経験を活かしつつ無理なく働けるキャバクラがおすすめ。ノルマなしで自分のペースで稼げるお店を厳選。';
-    tags = ['ノルマなし','自由シフト','日払いOK','経験者歓迎','駅チカ'];
+    desc = area + 'エリアのキャバクラ・中級店がおすすめ。ノルマなしで自分のペースで稼げるお店が多く、経験を積みながら収入アップを目指せます。';
+    tags = ['ノルマなし','自由シフト','日払いOK','研修充実','駅チカ'];
+  } else {
+    title = 'アットホームガールズバータイプ';
+    desc = area + 'エリアの未経験歓迎・カウンター越しで安心のガールズバーがおすすめ。私服OKや髪型自由など自由度が高いお店が多数。初めての方でも気軽にスタートできます。';
+    tags = ['未経験歓迎','私服OK','カウンター接客','日払いOK','短時間OK'];
   }
   document.getElementById('diag-result-title').textContent = title;
   document.getElementById('diag-result-desc').textContent = desc;
